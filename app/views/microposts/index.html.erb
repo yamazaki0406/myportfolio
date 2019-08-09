@@ -1,0 +1,27 @@
+<h1><%= @child.name %>のmicropost</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>記録した日</th>
+      <th>身長</th>
+      <th>体重</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @microposts.each do |form| %>
+      <tr>
+        <td><%= form.content %></td>
+        <td><%= link_to 'Edit', edit_micropost_path(form) %></td>
+        <td><%= link_to 'Destroy', micropost_path(form), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'micropostを入力する', new_micropost_path %>
+<%= link_to '子どものページに戻る', child_path(@child) %>

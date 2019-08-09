@@ -1,0 +1,22 @@
+<% provide(:title, 'Sign up') %>
+<h1><%= @child.name %>の入力</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <%= form_for(@growth, url:growths_path) do |form| %>
+  <%= render "shared/error_messages_for_new_growth" %>
+
+    <%= form.label :date %>
+    <%= form.date_select :date, class:"form-control" %>
+
+    <%= form.label :height %>
+    <%= form.number_field :height, :step=>"0.1", class:"form-control" %>
+
+    <%= form.label :weight %>
+    <%= form.number_field :weight, :step=>"0.1", class:"form-control" %>
+
+    <%= form.submit "Create my account", class:"btn btn-primary" %>
+  <% end %>
+  </div>
+   <%= link_to '身長・体重一覧に戻る', growths_path %>
+   <%= link_to '子どものページに戻る', child_path(@child) %>
+</div>

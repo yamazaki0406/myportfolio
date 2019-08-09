@@ -1,0 +1,26 @@
+<%= provide(:title, @child.name)%>
+<div class="row">
+<aside class="col-md-4">
+<section class="user_info">
+  <h1>
+  <% if @child.sex == "男の子" %>
+   <p><%= @child.name %>くん</p>
+  <% else %>
+   <p><%= @child.name %>ちゃん</p>
+  <% end %>
+  </h1>
+
+あなたの名前は <%= @child.user.name %>さんです。
+
+  <ul id="menu">
+   <li><%= link_to '今日の成長', microposts_path %></li>
+   <li><%= link_to '身長・体重の成長曲線', growths_path %></li>
+  </ul>
+
+  <ul>
+   <li><%= link_to '子どもの設定を変更する', edit_child_path %></li>
+   <li><%= link_to '新しい子を追加する', "#" %></li>
+  </ul>
+</section>
+</aside>
+</div>

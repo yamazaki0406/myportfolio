@@ -1,0 +1,26 @@
+<% provide(:title, 'Create new child') %>
+<h1>Create new child</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <%= form_for(@child, url:children_path) do |form| %>
+  <%= render "shared/error_messages_for_new_child" %>
+
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"form-control" %>
+
+    <%= form.label :sex %>
+    <label><%= form.radio_button :sex, "男の子" %> 男の子 </label>
+    <label><%= form.radio_button :sex, "女の子" %> 女の子</label>
+    <label><%= form.radio_button :sex, "その他" %> その他</label>
+    <br>
+
+    <%= form.label :birthday %>
+    <%= form.date_select :birthday, class:"form-control" %>
+
+
+    <%= form.number_field :user_id, value:session[:user_id], class:"form-control" %>
+
+    <%= form.submit "Create new child", class:"btn btn-primary" %>
+  <% end %>
+  </div>
+</div>

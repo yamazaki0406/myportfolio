@@ -1,0 +1,10 @@
+<% provide(:title, "Home") %>
+<div class="center jumbotron">
+  <h1>ポートフォリオサイトへようこそ！</h1>
+　<h2>これは私が転職をするために作成したポートフォリオになります。</h2>
+
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+
+<%= link_to image_tag("banar.png", alt: "サンプル的に入れた画像(保存場所は /assets/images)"),
+                      'http://rubyonrails.org/' %>

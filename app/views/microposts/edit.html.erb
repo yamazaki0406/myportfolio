@@ -1,0 +1,12 @@
+<% provide(:title, 'Sign up') %>
+<h1><%= @child.name %>のmicropostの編集</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <%= form_for(@micropost) do |form| %>
+  <%= render "shared/error_messages", object: form.object %>
+    <%= form.text_area :content, placeholder:"Compose new micropost..." %>
+    <%= form.submit "Create my account", class:"btn btn-primary" %>
+  <% end %>
+  <%= link_to 'micropost一覧に戻る', microposts_path %>
+  <%= link_to '子どものページに戻る', child_path(@child) %>
+</div>
