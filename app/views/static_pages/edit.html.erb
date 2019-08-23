@@ -1,0 +1,24 @@
+<h2 id="page_title">各種設定<h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-ex-9" id="static_edit_menu">
+      <%= link_to '子どもの設定を変更する', edit_child_path(session[:child_id]),
+       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+      <%= link_to 'ユーザーの設定を変更する', edit_user_path(session[:user_id]),
+       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+      <%= link_to '表示する子どもを切り替える', user_path(session[:user_id]),
+       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+      <%= link_to '新しい子を追加する', new_child_path,
+       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+      <%= link_to '別の保護者から共有してもらう', familys_path,
+       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+      <%= link_to 'アルバムを作る', "#",
+       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+      <%= link_to "Log out", logout_path, method: :delete,
+       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+    </div>
+  </div>
+</div>
+
+<%= link_to '＜＜子どものページに戻る', child_path(session[:child_id]) %>

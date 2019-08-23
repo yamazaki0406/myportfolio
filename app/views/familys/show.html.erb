@@ -1,0 +1,19 @@
+<div class="container">
+  <h2 id="page_title">
+    <% if @child.sex == "男の子" %>
+      <p><%= @child.name %>くんのパスワード</p>
+    <% else %>
+      <p><%= @child.name %>ちゃんのパスワード</p>
+    <% end %>
+    </h2>
+
+    <table class="table">
+      <tbody>
+        <td><span>パスワード</span></td>
+　      <td><span><%= @child_password %></span></td>
+      </tbody>
+    </table>
+
+　  <%= link_to '前のページに戻る', edit_path %>
+
+</div>

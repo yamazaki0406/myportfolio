@@ -1,0 +1,10 @@
+
+<% @growths.each do |form| %>
+<div class="container">
+<%= form.date, class: "list-group-item" %>
+<%= form.height, class: "list-group-item" %>
+<%= form.weight, class: "list-group-item" %>
+<%= link_to 'Edit', edit_growth_path(form), class: "list-group-item" %>
+<%= link_to 'Destroy', growth_path(form), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+</div>
+<% end %>

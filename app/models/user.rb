@@ -1,5 +1,9 @@
 class User < ApplicationRecord
- has_one :child
+ has_many :familys
+ has_many :children, through: :familys
+ has_many :microposts
+ has_many :growths
+
  attr_accessor :remember_token
  before_save {self.email = email.downcase}
 

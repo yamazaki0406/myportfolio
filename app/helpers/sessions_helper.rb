@@ -4,9 +4,19 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
-  def select_a_child(child) #現在作成中のメソッド(子どものセッションを付与する)
+  def select_a_child(child)
+    if session[:child_id] != nil
+      session.delete(:child_id)
+    end
     session[:child_id] = child.id
+    #もし、子どものセッションを持っていたらセッションを切る
+    #paramsに入っているセッションを追加する
+    #新しく入っているセッションにリダイレクトする
   end
+
+  def change_a_child
+  end
+
 
   def remember(user)
     user.remember

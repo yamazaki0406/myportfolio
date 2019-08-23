@@ -1,27 +1,22 @@
-<h1><%= @child.name %>のmicropost</h1>
+<h2 id="page_title">今日の成長</h2>
+<%= link_to '毎日の記録を入力する', new_micropost_path, class: "micropost_nav_list" %>
+<%= link_to 'トップページに戻る', child_path(@child), class: "micropost_nav_list" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>記録した日</th>
-      <th>身長</th>
-      <th>体重</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @microposts.each do |form| %>
-      <tr>
-        <td><%= form.content %></td>
-        <td><%= link_to 'Edit', edit_micropost_path(form) %></td>
-        <td><%= link_to 'Destroy', micropost_path(form), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'micropostを入力する', new_micropost_path %>
-<%= link_to '子どものページに戻る', child_path(@child) %>
+<div class="container">
+  <% @microposts.each do |form| %>
+    <div id="media">
+        <div id="media-body">
+            <h4 id="media-heading"><%= form.created_at %>(投稿者：<%= form.id %>)</h4>
+            <p id="media-content"><%= form.content %></p>
+        </div>
+        <% if form.images.attached? %>
+            <% form.images.each do |image| %>
+            <%= image_tag image.variant(resize:'300x300'), class:"media-right" %>
+            <% end %>
+        <% end %>
+    </div>
+        <%= link_to '削除する', micropost_path(form), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+        <%= link_to '修正する', edit_micropost_path(form) %>
+    <br><br>
+  <% end %>
+</div>

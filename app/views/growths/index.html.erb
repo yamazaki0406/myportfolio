@@ -1,32 +1,11 @@
-<br>
-<br><br>
+<h2 id="page_title"><%= @child.name %>の成長記録</h2>
 
-<h1><%= @child.name %>の成長記録</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>記録した日</th>
-      <th>身長</th>
-      <th>体重</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @growths.each do |form| %>
-      <tr>
-        <td><%= form.date %></td>
-        <td><%= form.height %></td>
-        <td><%= form.weight %></td>
-        <td><%= link_to 'Edit', edit_growth_path(form) %></td>
-        <td><%= link_to 'Destroy', growth_path(form), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="chart-container" style="height:80vh">
+<canvas id="myChart"></canvas>
+<script>draw_graph();</script>
+</div>
 
 <br>
-
-<%= link_to '子どもの成長を入力する', new_growth_path %>
-<%= link_to '子どものページに戻る', child_path(@child) %>
+<%= link_to '身体計測の結果を入力する', new_growth_path, class:"btn btn-primary btn-lg" %>
+<%= link_to '身体計測の結果を修正する', detail_growth_path(session[:child_id]), class:"btn btn-primary btn-lg" %>
+<%= link_to '＜＜子どものページに戻る', child_path(@child) %>

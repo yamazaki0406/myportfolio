@@ -1,10 +1,13 @@
-<% provide(:title, "Home") %>
-<div class="center jumbotron">
-  <h1>ポートフォリオサイトへようこそ！</h1>
-　<h2>これは私が転職をするために作成したポートフォリオになります。</h2>
+<div class="top_main_container">
 
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  <h1 id="top_main_titie">ポートフォリオ</h1>
+  <h3 id="top_sub_titie">～サブタイトル～</h3>
+
+  <div class="top_nav_bar">
+    <%= link_to "テストログイン", login_path, class:"btn btn-primary btn-lg", id:"top_nav_list" %>
+    <%= link_to "ログイン", login_path, class:"btn btn-primary btn-lg", id:"top_nav_list" %>
+    <%= link_to "アカウントの新規作成", signup_path, class:"btn btn-primary btn-lg", id:"top_nav_list" %>
+    <%= link_to "このアプリについて", about_path, class:"btn btn-primary btn-lg", id:"top_nav_list" %>
+  </div>
+
 </div>
-
-<%= link_to image_tag("banar.png", alt: "サンプル的に入れた画像(保存場所は /assets/images)"),
-                      'http://rubyonrails.org/' %>

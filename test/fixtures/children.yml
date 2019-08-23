@@ -4,8 +4,15 @@ tom:
   name: Tom Tanaka
   sex: 男の子
   birthday: 2019-07-27
+  child_password: sample
 
 jon:
   name: Jon Suzuki
   sex: 女の子
   birthday: 2019-05-19
+  child_password: sample
+
+bera:
+  name: bera yamada
+  sex: その他
+  birthday: 2017-05-19

@@ -1,6 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, except: [:index, :show]
-  before_action :correct_child,   only: :destroy
+  before_action :making_user, only: :destroy
 
   def index
     @child = Child.find(session[:child_id])
@@ -16,7 +16,7 @@ class MicropostsController < ApplicationController
     @child = Child.find(session[:child_id])
     @micropost = @child.microposts.build(micropost_params)
     if @micropost.save
-      flash[:success] = "Micropost created!"
+      flash[:success] = "記事の登録が完了しました！"
       redirect_to microposts_url
     else
       render "new"
@@ -32,7 +32,7 @@ class MicropostsController < ApplicationController
     @child = Child.find(session[:child_id])
     @micropost = Micropost.find(params[:id])
     if @micropost.update_attributes(micropost_params)
-      flash[:success] = "Growth updated"
+      flash[:success] = "記事の編集が完了しました！"
       redirect_to microposts_url
     else
       render "edit"
@@ -41,19 +41,20 @@ class MicropostsController < ApplicationController
 
   def destroy
    Micropost.find(params[:id]).destroy
-   flash[:success] = "User deleted"
+   flash[:success] = "記事を削除しました！"
    redirect_to microposts_url
   end
 
  private
  def micropost_params
-   params.require(:micropost).permit(:content)
+   params.require(:micropost).permit(:content, :user_id, images: [])
  end
 
- def correct_child
-   @child = Child.find(session[:child_id])
-   @micropost = @child.microposts.find_by(id: params[:id])
-   redirect_to microposts_url if @micropost.nil?
+ def making_user
+   @current_user_id = session[:user_id]
+   micropost = Micropost.find(params[:id])
+   @making_user_id = micropost.user_id
+   redirect_to microposts_url if @current_user_id != @making_user_id
  end
 
 end

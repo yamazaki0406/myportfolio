@@ -6,9 +6,10 @@ class ChildTest < ActiveSupport::TestCase
                        email: "sample@example.com",
                        password: "abcabc",
                        password_confirmation: "abcabc")
-   @child = @user.build_child(name: "男の子(次男)",
+   @child = @user.children.build(name: "男の子(次男)",
                               sex: "男の子",
-                              birthday: 2019-07-27)
+                              birthday: 2019-07-27,
+                              user_id: @user.id)
   end
 
   test "should be valid" do
@@ -34,7 +35,7 @@ class ChildTest < ActiveSupport::TestCase
 
   test "associated microposts should be destroyed" do
     @child.save
-    @child.microposts.create!(content: "Lorem ipsum")
+    @child.microposts.create!(content: "Lorem ipsum", user_id: @user.id)
     assert_difference 'Micropost.count', -1 do
       @child.destroy
     end

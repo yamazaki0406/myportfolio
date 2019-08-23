@@ -1,13 +1,28 @@
-<% provide(:title, 'Sign up') %>
-<h1><%= @child.name %>のmicropost</h1>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  <%= form_for(@micropost, url:microposts_path) do |form| %>
-  <%= render "shared/error_messages", object: form.object %>
-    <%= form.text_area :content, placeholder:"Compose new micropost..." %>
-    <%= form.submit "Create my account", class:"btn btn-primary" %>
-  <% end %>
+<h2 id="page_title"><%= @child.name %>の今日の出来事</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@micropost) do |form| %>
+        <%= render "shared/error_messages", object: form.object %>
+
+        <div class="form-group">
+        <%= form.text_area :content, placeholder:"今日の出来事を書いてください", class:"form-control", row:"3" %>
+　      </div>
+
+        <div class="form-group">
+        <%= form.file_field :images, multiple: true %>
+        </div>
+
+　      <%= form.hidden_field :user_id, value:session[:user_id] %>
+
+        <div class="form-group">
+        <%= form.submit "記録を投稿する", class:"btn btn-primary" %>
+     　 </div>
+
+     <% end %>
+      <%= link_to '日記のページに戻る', microposts_path %>
+      <%= link_to '子どものページに戻る', child_path(@child) %>
+    </div>
   </div>
-   <%= link_to 'micropost一覧に戻る', microposts_path %>
-   <%= link_to '子どものページに戻る', child_path(@child) %>
 </div>

@@ -1,10 +1,20 @@
 <% provide(:title, 'Sign up') %>
 <h1><%= @child.name %>のmicropostの編集</h1>
+<h1> ※　画像の削除・編集は後ろに回したまま…＆画像は今は１枚までしか投稿しちゃダメ(デザイン的な意味で)</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
   <%= form_for(@micropost) do |form| %>
   <%= render "shared/error_messages", object: form.object %>
     <%= form.text_area :content, placeholder:"Compose new micropost..." %>
+
+    <% if @micropost.images.attached? %>
+      <% @micropost.images.each do |image| %>
+       <%= image_tag image, class: "image" %>
+      <% end %>
+    <% end %>
+
+    <%= form.file_field :images, multiple: true %>
+
     <%= form.submit "Create my account", class:"btn btn-primary" %>
   <% end %>
   <%= link_to 'micropost一覧に戻る', microposts_path %>

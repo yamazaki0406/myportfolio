@@ -1,24 +1,32 @@
-<% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<h2 id="page_title">ログイン</h2>
+<p id="page_expain">登録したアドレスとパスワードを入力してください。</p>
 
+<div class="container">
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  <%= form_for(:session, url: login_path) do |f|  %>
+    <%= form_for(:session, url: login_path) do |f| %>
+      <div class="form-group">
+        <%= f.label :アドレス %>
+        <%= f.email_field :email, class:"form-control input-lg", id:"input_field" %>
+      </div>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <div class="form-group">
+        <%= f.label :パスワード %>
+        <%= f.password_field :password, class:"form-control input-lg", id:"input_field" %>
+      </div>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :remember_me, class: "checkbox inline" do %>
+      <div class="form-group">
         <%= f.check_box :remember_me %>
-        <span>Remember me on this computer</span>
-      <% end %>
+        <span>アプリへのログイン状態を継続します</span>
+      </div>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "ログイン", class:"btn btn-primary btn-lg" %>
     <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   </div>
 </div>
+</div>
+
+<p>初めてこのアプリを使う方は <%= link_to "こちら", signup_path %>で登録をしてください。</p>
+<br>
+<br>
+<%= link_to "＜＜前の画面に戻る", root_path %>

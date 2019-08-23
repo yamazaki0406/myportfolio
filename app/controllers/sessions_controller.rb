@@ -7,10 +7,10 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      if user.child
-        child = user.child
+      if user.children.count != 0
+        child = user.children.first
         select_a_child child
-        redirect_to child_path(id: user.child.id)
+        redirect_to child_path(session[:child_id])
       else
         redirect_to new_child_url
       #redirect_to user

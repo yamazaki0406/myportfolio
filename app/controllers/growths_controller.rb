@@ -1,8 +1,13 @@
 class GrowthsController < ApplicationController
+  before_action :logged_in_user, except: [:index, :detail]
+  before_action :making_user, only: :destroy
 
   def index
     @child = Child.find(session[:child_id])
-    @growths = @child.growths
+    gon.growth = @child.growths.count
+    gon.date = @child.growths.pluck(:date)
+    gon.height = @child.growths.pluck(:height)
+    gon.weight = @child.growths.pluck(:weight)
   end
 
   def new
@@ -14,16 +19,16 @@ class GrowthsController < ApplicationController
     @child = Child.find(session[:child_id])
     @growth = @child.growths.build(growth_params)
     if @growth.save
-      #login user(session[:user_id] = user.idを付与)
-      flash[:success] = "Create New growth!!"
+      flash[:success] = "登録が完了しました！"
       redirect_to growths_url
     else
       render "new"
     end
   end
 
-
-  def show #自分の子どものデータの一覧を抽出
+  def detail
+    @child = Child.find(session[:child_id])
+    @growths = @child.growths
   end
 
   def edit
@@ -35,7 +40,7 @@ class GrowthsController < ApplicationController
     @child = Child.find(session[:child_id])
     @growth = Growth.find(params[:id])
     if @growth.update_attributes(growth_params)
-      flash[:success] = "Growth updated"
+      flash[:success] = "更新が完了しました！"
       redirect_to growths_url
     else
       render "edit"
@@ -50,7 +55,14 @@ class GrowthsController < ApplicationController
 
   private
   def growth_params
-    params.require(:growth).permit(:date, :height, :weight, :child_id)
+    params.require(:growth).permit(:date, :height, :weight, :child_id, :user_id)
+  end
+
+  def making_user
+    @current_user_id = session[:user_id]
+    growth = Growth.find(params[:id])
+    @making_user_id = growth.user_id
+    redirect_to detail_growth_url if @current_user_id != @making_user_id
   end
 
 end

@@ -1,26 +1,25 @@
-<%= provide(:title, @child.name)%>
-<div class="row">
-<aside class="col-md-4">
-<section class="user_info">
-  <h1>
-  <% if @child.sex == "男の子" %>
-   <p><%= @child.name %>くん</p>
-  <% else %>
-   <p><%= @child.name %>ちゃん</p>
-  <% end %>
-  </h1>
+<div class="container" id="child_top_page">
 
-あなたの名前は <%= @child.user.name %>さんです。
+  <h2 id="page_title">
+    <% if @child.sex == "男の子" %>
+      <p><%= @child.name %>くん</p>
+    <% else %>
+      <p><%= @child.name %>ちゃん</p>
+    <% end %>
+    </h2>
 
-  <ul id="menu">
-   <li><%= link_to '今日の成長', microposts_path %></li>
-   <li><%= link_to '身長・体重の成長曲線', growths_path %></li>
-  </ul>
+    <% if @child.images.attached? %>
+        <% @child.images.each do |image| %>
+        <%= image_tag image.variant(resize:'300x300'), class:"img-circle center-block", id:"child_img" %>
+        <%= link_to '削除する', purge_child_path(@child), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+        <% end %>
+    <% end %>
+  <h3 id="page_expain"><%= @age %>歳</h3>
 
-  <ul>
-   <li><%= link_to '子どもの設定を変更する', edit_child_path %></li>
-   <li><%= link_to '新しい子を追加する', "#" %></li>
-  </ul>
-</section>
-</aside>
+　<ul class="child_nav">
+  <li><%= link_to '今日の成長', microposts_path, class:"btn btn-primary btn-lg", id:"child_nav_list" %></li>
+  <li><%= link_to '身長・体重', growths_path, class:"btn btn-primary btn-lg", id:"child_nav_list" %></li>
+  <li><%= link_to '各種設定', edit_path, class:"btn btn-primary btn-lg", id:"child_nav_list"  %></li>
+</ul>
+
 </div>

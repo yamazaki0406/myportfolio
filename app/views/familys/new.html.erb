@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+  <h2 id="page_title">既存の子を共有する</h2>
+    <div class="col-md-9">
+      <%= form_with scope: :family, url:familys_path, local:true do |form| %>
+
+      <div class="form-group">
+        <%= form.label :子どものID %>
+        <%= form.number_field :child_id, class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :子どもの名前 %>
+        <%= form.text_field :child_name, class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :パスワード%>
+        <%= form.text_field :child_password, class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :追加ユーザー %>
+        <%= form.text_field :user_id, class:"form-control", value:session[:user_id] %>
+      </div>
+
+      <div class="form-group">
+        <%= form.submit "子どもを共有する", class:"btn btn-primary" %>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

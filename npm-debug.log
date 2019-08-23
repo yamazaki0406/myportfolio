@@ -1,0 +1,62 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/bin/npm', 'install', 'bootflat' ]
+2 info using npm@1.3.6
+3 info using node@v0.10.48
+4 verbose readDependencies using package.json deps
+5 verbose cache add [ 'bootflat', null ]
+6 verbose cache add name=undefined spec="bootflat" args=["bootflat",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'bootflat',
+7 verbose parsed url   path: 'bootflat',
+7 verbose parsed url   href: 'bootflat' }
+8 silly lockFile c2237a19-bootflat bootflat
+9 verbose lock bootflat /home/vagrant/.npm/c2237a19-bootflat.lock
+10 silly lockFile c2237a19-bootflat bootflat
+11 silly lockFile c2237a19-bootflat bootflat
+12 verbose addNamed [ 'bootflat', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 5324ea9e-bootflat bootflat@
+15 verbose lock bootflat@ /home/vagrant/.npm/5324ea9e-bootflat.lock
+16 silly addNameRange { name: 'bootflat', range: '*', hasData: false }
+17 verbose url raw bootflat
+18 verbose url resolving [ 'https://registry.npmjs.org/', './bootflat' ]
+19 verbose url resolved https://registry.npmjs.org/bootflat
+20 info trying registry request attempt 1 at 11:13:01
+21 http GET https://registry.npmjs.org/bootflat
+22 info retry will retry, error on last attempt: Error: CERT_UNTRUSTED
+23 info trying registry request attempt 2 at 11:13:14
+24 http GET https://registry.npmjs.org/bootflat
+25 info retry will retry, error on last attempt: Error: CERT_UNTRUSTED
+26 info trying registry request attempt 3 at 11:14:14
+27 http GET https://registry.npmjs.org/bootflat
+28 silly lockFile 5324ea9e-bootflat bootflat@
+29 silly lockFile 5324ea9e-bootflat bootflat@
+30 error Error: CERT_UNTRUSTED
+30 error     at SecurePair.<anonymous> (tls.js:1430:32)
+30 error     at SecurePair.emit (events.js:92:17)
+30 error     at SecurePair.maybeInitFinished (tls.js:1029:10)
+30 error     at CleartextStream.read [as _read] (tls.js:521:13)
+30 error     at CleartextStream.Readable.read (_stream_readable.js:341:10)
+30 error     at EncryptedStream.write [as _write] (tls.js:418:25)
+30 error     at doWrite (_stream_writable.js:226:10)
+30 error     at writeOrBuffer (_stream_writable.js:216:5)
+30 error     at EncryptedStream.Writable.write (_stream_writable.js:183:11)
+30 error     at write (_stream_readable.js:602:24)
+31 error If you need help, you may report this log at:
+31 error     <http://github.com/isaacs/npm/issues>
+31 error or email it to:
+31 error     <npm-@googlegroups.com>
+32 error System Linux 2.6.32-754.14.2.el6.x86_64
+33 error command "node" "/usr/bin/npm" "install" "bootflat"
+34 error cwd /home/vagrant/portfolio
+35 error node -v v0.10.48
+36 error npm -v 1.3.6
+37 verbose exit [ 1, true ]

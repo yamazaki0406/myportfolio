@@ -1,0 +1,28 @@
+
+<div class="container">
+  <h2 id="page_title">身長・体重の修正</h2>
+
+<table class="table">
+   <thead>
+     <tr>
+       <th>測定日</th>
+       <th>身長</th>
+       <th>体重</th>
+       <th>edit</th>
+       <th>destroy</th>
+     </tr>
+   </thead>
+   <tbody>
+     <% @growths.each do |form| %>
+      <tr>
+      <td><%= form.date %></td>
+      <td><%= form.weight %></td>
+      <td><%= form.height %></td>
+      <td><%= link_to 'Edit', edit_growth_path(form) %></td>
+      <td><%= link_to 'Destroy', growth_path(form), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+     </tr>
+     <% end %>
+   </tbody>
+</table>
+<%= link_to '＜＜グラフのページに戻る', growths_path %>
+</div>

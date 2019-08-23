@@ -22,6 +22,11 @@ class UsersController < ApplicationController
    end
   end
 
+  def show
+    @user = User.find(params[:id])
+    @children = @user.children
+  end
+
   def edit
     @user = User.find(params[:id])
   end
@@ -34,11 +39,6 @@ class UsersController < ApplicationController
     else
       render "edit"
     end
-  end
-
-  def show
-    @user = User.find(params[:id])
-    @child = @user.child
   end
 
   def destroy

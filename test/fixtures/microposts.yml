@@ -2,8 +2,9 @@
 
 one:
   content: MyText
-  child: one
+  child: tom
   created_at: <%= 10.minutes.ago %>
+  user: archer
 
 two:
   content: MyText

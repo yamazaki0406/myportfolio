@@ -1,24 +1,47 @@
-<% provide(:title, 'Edit my child') %>
-<h1>Edit my child</h1>
+<h2 id="page_title">子どもの設定変更</h2>
+<div class="container">
+
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-9">
   <%= form_for(@child, url:child_path) do |form| %>
   <%= render "shared/error_messages_for_new_child" %>
 
-    <%= form.label :name %>
-    <%= form.text_field :name, class:"form-control" %>
+  <div class="form-group">
+    <%= form.label :名前 %>
+    <%= form.text_field :name, class:"form-control input-lg", id:"input_field" %>
+  </div>
 
-    <%= form.label :sex %>
-    <label><%= form.radio_button :sex, "男の子" %> 男の子 </label>
-    <label><%= form.radio_button :sex, "女の子" %> 女の子</label>
-    <label><%= form.radio_button :sex, "その他" %> その他</label>
-    <br>
+  <div class="form-group">
+  <%= form.file_field :images, multiple: true %>
+  </div>
 
-    <%= form.label :birthday %>
-    <%= form.date_select :birthday, class:"form-control" %>
+  <% if @child.images.attached? %>
+    <% @child.images.each do |image| %>
+     <%= image_tag image, class: "image" %>
+    <% end %>
+  <% end %>
 
-    <%= form.submit "Create new child", class:"btn btn-primary" %>
+  <div class="form-group">
+    <%= form.label :性別 %>
+    <label><%= form.radio_button :sex, "男の子",
+       class:"checkbox-inline" %> 男の子 </label>
+    <label><%= form.radio_button :sex, "女の子",
+       class:"checkbox-inline" %> 女の子</label>
+    <label><%= form.radio_button :sex, "その他",
+       class:"checkbox-inline" %> その他</label>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :誕生日 %>
+    <%= form.date_select :birthday, class:"form-control input-lg" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "設定を変更", class:"btn btn-primary btn-lg" %>
   <% end %>
   </div>
-   <%= link_to 'こどものページに戻る', child_path %>
+  </div>
 </div>
+</div>
+
+<%= link_to "＜＜前の画面に戻る", child_path %>

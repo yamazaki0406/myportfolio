@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: archer
+  child: tom
+
+two:
+  user: lana
+  child: jon
