@@ -23,7 +23,7 @@
 
       <div class="form-group">
         <%= form.label :誕生日 %>
-        <%= form.date_select :birthday, start_year: Time.now.year - 20, end_year: Time.now.year, class:"form-control" %>
+        <%= form.date_select :birthday, start_year: Time.now.year - 20, end_date: Date.today, class:"form-control" %>
       </div>
 
       <%= form.text_field :user_id, value:session[:user_id] %>
