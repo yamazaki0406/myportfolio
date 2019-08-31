@@ -45,6 +45,12 @@ class MicropostsController < ApplicationController
    redirect_to microposts_url
   end
 
+  def purge
+   Micropost.find(params[:id]).images.purge
+   flash[:success] = "画像を削除しました"
+   redirect_to edit_micropost_url(params[:id])
+  end
+
  private
  def micropost_params
    params.require(:micropost).permit(:content, :user_id, images: [])

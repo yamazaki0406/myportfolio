@@ -13,11 +13,12 @@ Rails.application.routes.draw do
  resources :children, except: [:index] do
    delete :purge, on: :member
  end
-
-
  resources :growths do
    get :detail, on: :member
  end
- resources :microposts
+ resources :microposts do
+   delete :purge, on: :member
+ end
+
  resources :familys
 end

@@ -50,7 +50,7 @@ class ChildrenController < ApplicationController
   def purge
    Child.find(params[:id]).images.purge
    flash[:success] = "子どもの画像を削除しました"
-   redirect_to user_url(session[:user_id])
+   redirect_to edit_child_url(session[:child_id])
   end
 
  private

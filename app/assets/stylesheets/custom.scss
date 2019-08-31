@@ -1,6 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+#alert{
+position: fixed;
+width: 100vw;
+}
+
 .top_main_container{
   background: image-url("top_image.png");
   background-position: center right;
@@ -39,14 +44,6 @@
   width: 55%;
   margin-top: 10px;
   margin-bottom: 5px;
-}
-
-#page_title{
-  text-align: center;
-}
-
-#page_expain{
-  text-align: center;
 }
 
 #input_field{
@@ -93,28 +90,17 @@
     border-radius: 5%;
 }
 
-#child_top_page{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #child_image{
+  border: solid;
   border-radius: 50%;
+  margin: 20px 20px 15px 15px;
   height: 350px;
   width: 350px;
+  text-align: center;
+  line-height: 350px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.child_nav{
-display: flex;
-justify-content: center;
-list-style: none;
-}
-
-#child_nav_list{
-    padding: 15px;
-    margin: 20px;
-  }
 
 #static_edit_menu{
   display: flex;
@@ -123,23 +109,21 @@ list-style: none;
 }
 
 #static_edit_list{
-  margin: 10px;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 #microposts{
   border: solid;
 }
 
-#media{
-  display: flex;
-  border: solid;
+#font_size{
+  font-size: 14px;
+  word-wrap: break-word;
 }
 
-#media-body{
-  display: flex;
-  flex-direction: column;
-}
-
-#child_img{
-border: solid
+#form_margin{
+margin-top: 35px;
+margin-bottom: 35px;
 }

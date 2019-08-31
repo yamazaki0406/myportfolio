@@ -1,25 +1,35 @@
-<div class="container" id="child_top_page">
+<div class="container"> <%# ページ全体を囲むコンテナ%>
 
-  <h2 id="page_title">
+  <div class="row">
+    <h2 class="text-center">
     <% if @child.sex == "男の子" %>
-      <p><%= @child.name %>くん</p>
+    <p><%= @child.name %>くん</p>
     <% else %>
-      <p><%= @child.name %>ちゃん</p>
+    <p><%= @child.name %>ちゃん</p>
     <% end %>
     </h2>
+  </div>
 
+  <div class="row">
     <% if @child.images.attached? %>
-        <% @child.images.each do |image| %>
-        <%= image_tag image.variant(resize:'300x300'), class:"img-circle center-block", id:"child_img" %>
-        <%= link_to '削除する', purge_child_path(@child), method: :delete, data: { confirm: '本当に削除しますか?' } %>
-        <% end %>
+      <% @child.images.each do |image| %>
+        <%= image_tag image.variant(resize:'400x400'), class:"img-circle center-block", id:"child_img" %>
+      <% end %>
+    <% else %>
+      <p id="child_image">no image</p>
     <% end %>
-  <h3 id="page_expain"><%= @age %>歳</h3>
+  </div>
 
-　<ul class="child_nav">
-  <li><%= link_to '今日の成長', microposts_path, class:"btn btn-primary btn-lg", id:"child_nav_list" %></li>
-  <li><%= link_to '身長・体重', growths_path, class:"btn btn-primary btn-lg", id:"child_nav_list" %></li>
-  <li><%= link_to '各種設定', edit_path, class:"btn btn-primary btn-lg", id:"child_nav_list"  %></li>
-</ul>
+  <div class="row">
+    <h3 class="text-center"><%= @age %>歳</h3>
+  </div>
 
-</div>
+  <div class="row">
+    <div class="btn-group btn-group-justified", role="group">
+    <%= link_to 'アルバムを残す', microposts_path, class:"btn btn-default", role:"button" %>
+    <%= link_to '身長・体重を測る', growths_path, class:"btn btn-default", role:"button" %>
+    <%= link_to '各種設定', edit_path, class:"btn btn-default", role:"button"  %>
+    </div>
+  </div>
+
+</div><%# ページ全体を囲むコンテナ%>

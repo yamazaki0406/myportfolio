@@ -1,24 +1,14 @@
-<h2 id="page_title">各種設定<h2>
+<div class="container"> <%# ページ全体を囲むコンテナ%>
+<div class="col-md-offset-3 col-md-6"> <%# グリッドシステム%>
 
-<div class="container">
-  <div class="row">
-    <div class="col-ex-9" id="static_edit_menu">
-      <%= link_to '子どもの設定を変更する', edit_child_path(session[:child_id]),
-       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
-      <%= link_to 'ユーザーの設定を変更する', edit_user_path(session[:user_id]),
-       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
-      <%= link_to '表示する子どもを切り替える', user_path(session[:user_id]),
-       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
-      <%= link_to '新しい子を追加する', new_child_path,
-       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
-      <%= link_to '別の保護者から共有してもらう', familys_path,
-       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
-      <%= link_to 'アルバムを作る', "#",
-       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
-      <%= link_to "Log out", logout_path, method: :delete,
-       class:"btn btn-primary btn-lg", id:"static_edit_list" %>
-    </div>
-  </div>
+<h2 class="text-center">各種設定<h2>
+<div id="static_edit_menu">
+  <%= link_to 'ユーザーの設定変更', edit_user_path(session[:user_id]), class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+  <%= link_to '子どもの設定変更', user_path(session[:user_id]), class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+  <%= link_to '別の保護者と共有', familys_path, class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+  <%= link_to "ログアウト", logout_path, method: :delete, class:"btn btn-primary btn-lg", id:"static_edit_list" %>
 </div>
+<%= link_to '＜＜子どものページに戻る', child_path(session[:child_id]), id:"font_size" %>
 
-<%= link_to '＜＜子どものページに戻る', child_path(session[:child_id]) %>
+</div> <%# グリッドシステム%>
+</div> <%# ページ全体を囲むコンテナ%>
