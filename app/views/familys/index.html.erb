@@ -1,15 +1,23 @@
-<div class="container">
-<h2 id="page_title">別の保護者との共有</h2>
+<div class="container">  <%# ページ全体を囲むコンテナ%>
+<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
 
-<table class="table">
-  <tbody>
-  <% @children.each do |form| %>
-  <tr>
-  <td><%= form.name %></td><td><%= link_to 'パスワードを確認',family_path(form) %></td>
-  </tr>
-  <% end %>
-  </tbody>
-</table>
-<%= link_to '前のページに戻る', edit_path %>
-<%= link_to '子どもを追加する', new_family_path, class:"btn btn-primary btn-lg" %>
-</div>
+  <h2 class="text-center">別の保護者との連携</h2><br>
+
+  <h4 style="bold">子どもを受け取る</h4>
+    <%= link_to '子どもを追加する', new_family_path, class:"btn btn-primary btn-lg" %><br><br><br><br>
+
+  <h4>子どもを共有する</h4>
+    <table class="table">
+      <tbody>
+        <% @children.each do |form| %>
+          <tr>
+            <td><%= form.name %></td>
+            <td><%= link_to 'パスワードを確認',family_path(form) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <%= link_to '＜＜前のページに戻る', edit_path %>
+
+</div> <%# グリッドシステム%>
+</div>  <%# ページ全体を囲むコンテナ%>

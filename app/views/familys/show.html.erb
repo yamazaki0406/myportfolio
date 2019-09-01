@@ -1,19 +1,39 @@
-<div class="container">
-  <h2 id="page_title">
+<div class="container">  <%# ページ全体を囲むコンテナ%>
+<div class="col-md-offset-3 col-md-6"> <%# グリッドシステム%>
+
+  <h2 class="text-center">
     <% if @child.sex == "男の子" %>
       <p><%= @child.name %>くんのパスワード</p>
     <% else %>
       <p><%= @child.name %>ちゃんのパスワード</p>
     <% end %>
     </h2>
+    <br><br>
 
+    <h4>パスワード情報</h4>
     <table class="table">
       <tbody>
-        <td><span>パスワード</span></td>
-　      <td><span><%= @child_password %></span></td>
+        <tr><td><span>Ｉ　　　Ｄ</span></td>
+　          <td><span><%= @child.id %></span></td></tr>
+        <tr><td><span>名　　　前</span></td>
+　          <td><span><%= @child.name %></span></td></tr>
+        <tr><td><span>パスワード</span></td>
+            <td><span><%= @child.child_password %></span></td></tr>
       </tbody>
     </table>
+    <br>
+    <br>
+
+      <%= form_with url:share_family_path, method: :post, local:true do |form| %>
+        <div class="form-group">
+          <%= form.label :メールで共有する %>
+          <%= form.text_field :address, placeholder:"共有したい相手のアドレスを入力してください。", class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= form.submit "送　　信", data: { confirm: "メールを送信します。入力したアドレスに誤りはないですか？"}, class:"btn btn-primary" %>
+        </div>
+      <% end %>
 
 　  <%= link_to '前のページに戻る', edit_path %>
-
-</div>
+</div> <%# グリッドシステム%>
+</div>  <%# ページ全体を囲むコンテナ%>

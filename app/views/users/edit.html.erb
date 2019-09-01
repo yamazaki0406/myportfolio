@@ -1,32 +1,35 @@
-<h2 id="page_title">ユーザー設定変更</h2>
+<div class="container">  <%# ページ全体を囲むコンテナ%>
+<div class="col-md-offset-3 col-md-6"> <%# グリッドシステム%>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |form| %>
-      <%= render 'shared/error_messages', object: form.object %>
+  <h2 class="text-center">ユーザー設定変更</h2>
 
-      <div class="form-group">
+  <%= form_for(@user) do |form| %>
+    <%= render 'shared/error_messages', object: form.object %>
+    <div class="form-group">
       <%= form.label :名前 %>
       <%= form.text_field :name, class: 'form-control' %>
-      </div>
+    </div>
 
-      <div class="form-group">
+    <div class="form-group">
       <%= form.label :アドレス %>
       <%= form.email_field :email, class: 'form-control' %>
-      </div>
+    </div>
 
-      <div class="form-group">
+    <div class="form-group">
       <%= form.label :パスワード %>
       <%= form.password_field :password, class: 'form-control' %>
-      </div>
+    </div>
 
-      <div class="form-group">
+    <div class="form-group">
       <%= form.label :確認用パスワードの再入力 %>
       <%= form.password_field :password_confirmation, class: 'form-control' %>
-      </div>
+    </div>
 
-      <%= form.submit "設定を変更する", class: "btn btn-primary btn-lg" %>
-    <% end %>
+    <%= form.submit "設定を変更する", class: "btn btn-primary btn-lg" %>
+  <% end %>
   </div>
-</div>
-   <%= link_to '＜＜前のページに戻る', edit_path %>
+  </div>
+  <%= link_to '＜＜前のページに戻る', edit_path %>
+
+</div> <%# グリッドシステム%>
+</div>  <%# ページ全体を囲むコンテナ%>

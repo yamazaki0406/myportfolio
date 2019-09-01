@@ -1,5 +1,7 @@
 class FamilysController < ApplicationController
   before_action :parent_user, only: :show
+  before_action :address_blank_check, only: :share
+
 
   def index
     @user = User.find(session[:user_id])
@@ -29,12 +31,17 @@ class FamilysController < ApplicationController
 
   def show
     @child = Child.find(params[:id])
-    @child_password = @child.child_password
+  end
+
+  def share
+    UserMailer.share_child(session[:user_id], params[:id], params[:address]).deliver_now
+    flash[:success] = "メールを送信しました"
+    redirect_to familys_url
   end
 
   private
    def family_params
-     params.require(:family).permit(:child_id, :child_name, :child_password, :user_id)
+     params.require(:family).permit(:child_id, :child_name, :child_password, :user_id, :address)
    end
 
    def parent_user
@@ -43,6 +50,14 @@ class FamilysController < ApplicationController
      unless Family.where(user_id: @current_user_id).where(child_id: @child_id).presence
        redirect_to login_url
      end
+   end
+
+   def address_blank_check
+    unless params[:address].presence
+      flash.now[:danger] = "アドレスが空欄になっています！"
+      @child = Child.find(params[:id])
+      render "show"
+    end
    end
 
 end
