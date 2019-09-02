@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.2'
+gem "aws-sdk-s3", require: false
 gem 'jquery-rails', '4.3.1'
 gem 'bcrypt', '3.1.12'
 gem 'faker'
@@ -77,6 +78,10 @@ end
 
 group :production do
   gem 'pg'
+end
+
+group :production, :staging do
+  gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -24,4 +24,8 @@ production:
   <<: *default
   adapter: postgresql
   encoding: unicode
+  username: postgres
   pool: 5
+  password: yamazaki
+  host: database-1.c9phydmc5xiv.ap-northeast-1.rds.amazonaws.com
+  database: database1
