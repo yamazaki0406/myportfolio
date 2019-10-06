@@ -1,7 +1,7 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-    The form contains<%= pluralize(object.errors.count, "error") %>.
+    入力した内容に<%= object.errors.count %>個の誤りがあります。
     </div>
     <ul>
       <% object.errors.full_messages.each do |msg| %>

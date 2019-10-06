@@ -34,8 +34,8 @@ window.draw_graph = ->
                     type: "linear",
                     position: "left",
                     ticks: {
-                        max: 120,
-                        min: 30,
+                        suggestedMax: 120,
+                        suggestedMin: 30,
                         stepSize: 20
                     },
                 }, {
@@ -43,8 +43,8 @@ window.draw_graph = ->
                     type: "linear",
                     position: "right",
                     ticks: {
-                        max: 30,
-                        min: 5,
+                        suggestedMax: 30,
+                        suggestedMin: 5,
                         stepSize: 5
                     },
                 }]
