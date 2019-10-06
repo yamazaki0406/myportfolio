@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
 class ApplicationMailer < ActionMailer::Base
-  default from: 'myportfolio@childport.net'
+  default from: 'from@example.com'
   layout 'mailer'
 end

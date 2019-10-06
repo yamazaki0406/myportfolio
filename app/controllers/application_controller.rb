@@ -1,15 +1,13 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  include SessionsHelper
+protect_from_forgery with: :exception
+include SessionsHelper
 
-  private
-
+private
   def logged_in_user
-    return if logged_in?
-
-    flash[:danger] = 'ログインをしてください'
-    redirect_to login_url
+    unless logged_in?
+      flash[:danger] = "Please log in"
+      redirect_to login_url
+    end
   end
+
 end

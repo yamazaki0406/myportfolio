@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 class GrowthsController < ApplicationController
-  before_action :logged_in_user, except: %i[index detail]
+  before_action :logged_in_user, except: [:index, :detail]
   before_action :making_user, only: :destroy
 
   def index
@@ -21,10 +19,10 @@ class GrowthsController < ApplicationController
     @child = Child.find(session[:child_id])
     @growth = @child.growths.build(growth_params)
     if @growth.save
-      flash[:success] = '登録が完了しました！'
+      flash[:success] = "登録が完了しました！"
       redirect_to growths_url
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -42,21 +40,20 @@ class GrowthsController < ApplicationController
     @child = Child.find(session[:child_id])
     @growth = Growth.find(params[:id])
     if @growth.update_attributes(growth_params)
-      flash[:success] = '更新が完了しました！'
+      flash[:success] = "更新が完了しました！"
       redirect_to growths_url
     else
-      render 'edit'
+      render "edit"
     end
   end
 
   def destroy
-    Growth.find(params[:id]).destroy
-    flash[:success] = 'User deleted'
-    redirect_to growths_url
+   Growth.find(params[:id]).destroy
+   flash[:success] = "User deleted"
+   redirect_to growths_url
   end
 
   private
-
   def growth_params
     params.require(:growth).permit(:date, :height, :weight, :child_id, :user_id)
   end
@@ -67,4 +64,5 @@ class GrowthsController < ApplicationController
     @making_user_id = growth.user_id
     redirect_to detail_growth_url if @current_user_id != @making_user_id
   end
+
 end
