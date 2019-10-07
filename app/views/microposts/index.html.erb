@@ -7,27 +7,29 @@
   <br>
 
   <% @microposts.each do |form| %>
-　<div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title"><%= form.created_at.strftime("%Y年%m月%d日") %>(投稿者：<%= User.find(form.user_id).name %>)</h4>
-    </div>
-    <div class="panel-body">
-      <p id="font_size"><%= form.content %></p>
-      <% if form.images.attached? %>
-        <% form.images.each do |image| %>
-          <%= image_tag image.variant(resize:'300x300') %>
+  　<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title"><%= form.created_at.strftime("%Y年%m月%d日") %>(投稿者：<%= User.find(form.user_id).name %>)</h4>
+      </div>
+
+      <div class="panel-body">
+        <p id="font_size"><%= form.content %></p>
+        <% if form.images.attached? %>
+          <% form.images.each do |image| %>
+            <%= image_tag image.variant(resize:'300x300') %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+
+      <div class="panel-footer">
+        <% if form.user_id == session[:user_id] %>
+          <%= link_to '修正する', edit_micropost_path(form) %>
+          <%= link_to '削除する', micropost_path(form), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+        <% end %>
+      </div>
     </div>
-    <div class="panel-footer">
-    <%= link_to '修正する', edit_micropost_path(form) %>
-    <%= link_to '削除する', micropost_path(form), method: :delete, data: { confirm: '本当に削除しますか?' } %>
-    </div>
-  </div>
   <% end %>
 
-  <br>
-  <%= link_to 'トップページに戻る', child_path(@child) %>
-
+  <%= will_paginate @microposts, :renderer => BootstrapPagination::Rails %>
 </div> <%# グリッドシステム%>
 </div> <%# ページ全体を囲むコンテナ%>

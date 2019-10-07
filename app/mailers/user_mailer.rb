@@ -1,5 +1,6 @@
-class UserMailer < ApplicationMailer
+# frozen_string_literal: true
 
+class UserMailer < ApplicationMailer
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -9,6 +10,6 @@ class UserMailer < ApplicationMailer
     @user = User.find(user)
     @child = Child.find(child)
     @new_parent_address = address
-    mail to: @new_parent_address, subject: "子育て共有アプリからのお知らせ"
+    mail to: @new_parent_address, subject: '子育て共有アプリからのお知らせ'
   end
 end

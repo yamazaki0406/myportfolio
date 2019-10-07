@@ -1,8 +1,8 @@
 <div class="container">  <%# ページ全体を囲むコンテナ%>
 <div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
 
-  <h2 class="text-center">アカウントの新規登録</h2>
-  <p class="text-center">まずはじめに、あなたの情報を入力してください</p>
+  <h2 class="text-center">アカウントの新規作成</h2>
+  <p class="text-center">あなたの情報を入力してください</p>
 
     <%= form_for(@user, url:signup_path) do |form| %>
       <%= render "shared/error_messages", object: form.object %>
@@ -22,12 +22,12 @@
         <%= form.label :パスワード再入力 %>
         <%= form.password_field :password_confirmation, class:"form-control input-lg", id:"input_field" %>
       </div>
-        <%= form.submit "登録をする", class:"btn btn-primary btn-lg" %>
+        <%= form.submit "作成する", class:"btn btn-primary btn-lg" %>
     <% end %>
 
 <br>
 <br>
-<%= link_to "＜＜前の画面に戻る", root_path %>
+<%= link_to "＜＜トップページに戻る", root_path %>
 
 </div> <%# グリッドシステム%>
 </div>  <%# ページ全体を囲むコンテナ%>

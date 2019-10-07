@@ -1,0 +1,39 @@
+AllCops:
+# 除外するディレクトリ(自動生成されたファイル)
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - db/migrate/*
+    - vendor/**/*
+    - config/**/*
+    - config/*
+    - Guardfile
+    - Rakefile
+    - Gemfile
+
+# "Missing top-level class documentation comment."を無効
+Style/Documentation:
+
+# "Missing top-level class documentation comment."を無効
+  Enabled: false
+
+# "AsciiComments: Use only ascli symbols in comments."を無効
+Style/AsciiComments:
+  Enabled: false
+
+# "LineLength: Line is too long."を90まで引き上げ
+LineLength:
+  Max: 90
+
+# "/AbcSize: Assignment Branch Condition size for create is too long."を40ま>で引き上げ
+Metrics/AbcSize:
+  Max: 40
+
+# "Metrics/MethodLength: Method has too many lines."の長さを20行にまで引き上>げ
+MethodLength:
+  Max: 20
+
+PredicateName:
+  NamePrefixBlacklist:
+    - has_
+    - have_

@@ -8,7 +8,8 @@
       <p><%= @child.name %>ちゃんのパスワード</p>
     <% end %>
     </h2>
-    <br><br>
+    <p class="text-center">「パスワード情報」の内容を「送信先」のアドレスに送ります。</p>
+    <br>
 
     <h4>パスワード情報</h4>
     <table class="table">
@@ -22,18 +23,17 @@
       </tbody>
     </table>
     <br>
-    <br>
 
+    <h4>送信先</h4>
       <%= form_with url:share_family_path, method: :post, local:true do |form| %>
         <div class="form-group">
-          <%= form.label :メールで共有する %>
           <%= form.text_field :address, placeholder:"共有したい相手のアドレスを入力してください。", class:"form-control" %>
         </div>
         <div class="form-group">
-          <%= form.submit "送　　信", data: { confirm: "メールを送信します。入力したアドレスに誤りはないですか？"}, class:"btn btn-primary" %>
+          <%= form.submit "送　　信", data: { confirm: "メールを送信します。>入力したアドレスに誤りはないですか？"}, class:"btn btn-primary" %>
         </div>
       <% end %>
 
-　  <%= link_to '前のページに戻る', edit_path %>
+　  <%= link_to '＜＜前のページに戻る', edit_path %>
 </div> <%# グリッドシステム%>
 </div>  <%# ページ全体を囲むコンテナ%>

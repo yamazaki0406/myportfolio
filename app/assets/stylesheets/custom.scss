@@ -2,8 +2,8 @@
 @import "bootstrap";
 
 #alert{
-position: fixed;
-width: 100vw;
+ display: float;
+ width: 100vw;
 }
 
 .top_main_container{
@@ -17,7 +17,7 @@ width: 100vw;
   }
 
 #top_main_titie{
-  padding-top: 25px;
+  padding-top: 50px;
   margin-bottom: 0;
   color: #eee;
   text-align: center;
@@ -42,8 +42,14 @@ width: 100vw;
 
 #top_nav_list{
   width: 55%;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+#easy_login{
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 #input_field{

@@ -1,34 +1,37 @@
-<div class="container">
-  <div class="row">
-  <h2 id="page_title">既存の子を共有する</h2>
-    <div class="col-md-9">
-      <%= form_with scope: :family, url:familys_path, local:true do |form| %>
+<% if session[:user_id].presence && session[:child_id].presence %>
+  <%= render "layouts/header" %>
+<% end %>
 
-      <div class="form-group">
-        <%= form.label :子どものID %>
-        <%= form.number_field :child_id, class:"form-control" %>
-      </div>
+<div class="container">  <%# ページ全体を囲むコンテナ%>
+<div class="col-md-offset-3 col-md-6"> <%# グリッドシステム%>
 
-      <div class="form-group">
-        <%= form.label :子どもの名前 %>
-        <%= form.text_field :child_name, class:"form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= form.label :パスワード%>
-        <%= form.text_field :child_password, class:"form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= form.label :追加ユーザー %>
-        <%= form.text_field :user_id, class:"form-control", value:session[:user_id] %>
-      </div>
-
-      <div class="form-group">
-        <%= form.submit "子どもを共有する", class:"btn btn-primary" %>
-      </div>
-
-      <% end %>
+  <h2 class="text-center">子どものデータを受け取る</h2>
+  <p class="text-center">別のユーザーから送られたデータを入力すると、子どもを共有することができます。</p>
+  <%= form_with scope: :family, url:familys_path, local:true do |form| %>
+    <div class="form-group">
+      <%= form.label :子どものID %>
+      <%= form.number_field :child_id, class:"form-control" %>
     </div>
-  </div>
-</div>
+
+    <div class="form-group">
+      <%= form.label :子どもの名前 %>
+      <%= form.text_field :child_name, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :パスワード%>
+      <%= form.text_field :child_password, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.hidden_field :user_id, class:"form-control", value:session[:user_id] %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "データを受け取る", class:"btn btn-primary" %>
+    </div>
+  <% end %>
+　<br>
+  <%= link_to '＜＜前のページに戻る', familys_path %>
+</div> <%# グリッドシステム%>
+</div>  <%# ページ全体を囲むコンテナ%>

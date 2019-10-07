@@ -4,11 +4,11 @@
 <h2 class="text-center">各種設定<h2>
 <div id="static_edit_menu">
   <%= link_to 'ユーザーの設定変更', edit_user_path(session[:user_id]), class:"btn btn-primary btn-lg", id:"static_edit_list" %>
-  <%= link_to '子どもの設定変更', user_path(session[:user_id]), class:"btn btn-primary btn-lg", id:"static_edit_list" %>
-  <%= link_to '別の保護者と共有', familys_path, class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+  <%= link_to '子どもの設定変更', edit_child_path(session[:child_id]), class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+  <%= link_to '別のユーザーと連携', familys_path, class:"btn btn-primary btn-lg", id:"static_edit_list" %>
+  <%= link_to '子どもの一覧', user_path(session[:user_id]), class:"btn btn-primary btn-lg", id:"static_edit_list" %>
   <%= link_to "ログアウト", logout_path, method: :delete, class:"btn btn-primary btn-lg", id:"static_edit_list" %>
 </div>
-<%= link_to '＜＜子どものページに戻る', child_path(session[:child_id]), id:"font_size" %>
 
 </div> <%# グリッドシステム%>
 </div> <%# ページ全体を囲むコンテナ%>

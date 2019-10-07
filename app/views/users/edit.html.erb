@@ -1,10 +1,14 @@
+<% if session[:user_id].presence && session[:child_id].presence %>
+  <%= render "layouts/header" %>
+<% end %>
+
 <div class="container">  <%# ページ全体を囲むコンテナ%>
 <div class="col-md-offset-3 col-md-6"> <%# グリッドシステム%>
 
   <h2 class="text-center">ユーザー設定変更</h2>
 
   <%= form_for(@user) do |form| %>
-    <%= render 'shared/error_messages', object: form.object %>
+  <%= render 'shared/error_messages', object: form.object %>
     <div class="form-group">
       <%= form.label :名前 %>
       <%= form.text_field :name, class: 'form-control' %>
@@ -27,8 +31,7 @@
 
     <%= form.submit "設定を変更する", class: "btn btn-primary btn-lg" %>
   <% end %>
-  </div>
-  </div>
+  <br>
   <%= link_to '＜＜前のページに戻る', edit_path %>
 
 </div> <%# グリッドシステム%>

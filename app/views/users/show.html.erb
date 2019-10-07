@@ -1,24 +1,31 @@
-<div class="container">
-<h2 id="page_title"><%= @user.name %>の子ども一覧ページ</h2>
+<%= render "layouts/header" %>
 
-<table class="table">
-  <tbody>
-  <% @children.each do |form| %>
-  <tr>
-  <td><%= form.name %></td>
-  <% if form.id == session[:child_id] %>
-　  <td><%= link_to '前のページに戻る', child_path(form) %></td>
-  <% elsif %>
-    <td><%= link_to '表示を切り替える', child_path(form) %></td>
-  <% end %>
-  <td><%= link_to '設定を変更する', edit_child_path(form) %></td>
-  <% if @user.children.count > 1 %>
-    <td><%= link_to 'データを削除する', child_path(form), method: :delete, data: { confirm: '本当に削除しますか?一度削除したデータは二度と戻せません。' } %></td>
-  <% end %>
-  </tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="container"> <%# ページ全体を囲むコンテナ%>
+<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
+
+  <h2 class="text-center">子どもの一覧</h2>
+  <p class="text-center">あなたが登録した子ども・別のユーザーから受け取った子どもの一覧です。</p>
+
+  <%= link_to "新しい子どもを登録", new_child_path, class:"btn btn-primary btn-lg" %>
+  <br>
+  <table class="table">
+    <tbody>
+    <% @children.each do |form| %>
+    <tr>
+    <td><%= form.name %></td>
+    <% if form.id == session[:child_id] %>
+  　  <td></td>
+    <% elsif %>
+      <td><%= link_to '表示を切り替える', child_path(form) %></td>
+    <% end %>
+    <% if @user.children.count > 1 %>
+      <td><%= link_to '削除', child_path(form), method: :delete, data: { confirm: '本当に削除しますか?一度削除したデータは二度と戻せません。' } %></td>
+    <% end %>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
   <%= link_to '＜＜各種設定に戻る', edit_path %>
-  <%= link_to "新しい子どもを登録する", new_child_path, class:"btn btn-primary" %>
-</div>
+
+</div> <%# グリッドシステム%>
+</div> <%# ページ全体を囲むコンテナ%>

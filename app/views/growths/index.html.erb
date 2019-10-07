@@ -1,18 +1,16 @@
 <div class="container"> <%# ページ全体を囲むコンテナ%>
 <div class="col-md-offset-1 col-md-10"> <%# グリッドシステム%>
 
-<h2 class="text-center"><%= @child.name %>の成長記録</h2>
-<p class="text-center">子どもの身長・体重を記録しましょう。</p>
-<%= link_to '記録の入力', new_growth_path, class:"btn btn-primary btn-lg" %><br>
+  <h2 class="text-center">身長・体重</h2>
+  <%= link_to '記録の入力', new_growth_path, class:"btn btn-primary btn-lg" %><br>
 
-<div style="height:80vh">
-  <canvas id="myChart"></canvas>
-  <script>draw_graph();</script>
-</div>
+  <div style="height:60vh">
+    <canvas id="myChart"></canvas>
+    <script>draw_graph();</script>
+  </div>
 
-<br>
-<%= link_to '＜＜子どものページに戻る', child_path(@child) %><br><br>
-<%= link_to '記録の修正＞＞', detail_growth_path(session[:child_id]) %>
+  <br>
+  <%= link_to '記録の修正＞＞', detail_growth_path(session[:child_id]) %>
 
 </div> <%# グリッドシステム%>
 </div> <%# ページ全体を囲むコンテナ%>

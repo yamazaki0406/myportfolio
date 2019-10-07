@@ -2,11 +2,13 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.2'
+gem "aws-ses"
 gem "aws-sdk-s3", require: false
 gem 'jquery-rails', '4.3.1'
 gem 'bcrypt', '3.1.12'
 gem 'faker'
-gem 'will_paginate',           '3.1.7'
+gem 'will_paginate', '3.1.7'
+gem 'will_paginate-bootstrap'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.3.7'
 gem 'chart-js-rails', '~> 0.1.4'
@@ -29,6 +31,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -60,6 +63,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
+  gem 'rubocop', require: false
   gem 'binding_of_caller'
 end
 

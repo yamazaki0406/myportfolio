@@ -3,7 +3,7 @@
 
   <h2 class="text-center">身長・体重の入力</h2>
   <%= form_for(@growth, url:growths_path) do |form| %>
-    <%= render "shared/error_messages_for_new_growth" %>
+  <%= render "shared/error_messages", object: form.object %>
     <div class="form-group">
       <%= form.label :測定日 %>
       <%= form.date_select :date, class:"form-control" %>
@@ -27,7 +27,6 @@
 
   <% end %>
   <%= link_to ' ＜＜身長・体重一覧に戻る', growths_path %><br><br>
-  <%= link_to '＜＜子どものページに戻る', child_path(@child) %>
 
 </div> <%# グリッドシステム%>
 </div>  <%# ページ全体を囲むコンテナ%>

@@ -1,38 +1,32 @@
-<div class="container">
+<div class="container">  <%# ページ全体を囲むコンテナ%>
+<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
 
-<h2 id="page_title">ログイン</h2>
-<p id="page_expain">登録したアドレスとパスワードを入力してください。</p>
+  <h2 class="text-center">ログイン</h2>
+  <p class="text-center">登録したアドレスとパスワードを入力してください。</p>
 
-<div class="container">
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
-      <div class="form-group">
-        <%= f.label :アドレス %>
-        <%= f.email_field :email, class:"form-control input-lg", id:"input_field" %>
-      </div>
+  <%= form_for(:session, url: login_path) do |f| %>
+    <div class="form-group">
+      <%= f.label :アドレス %>
+      <%= f.email_field :email, class:"form-control input-lg", id:"input_field" %>
+    </div>
 
-      <div class="form-group">
-        <%= f.label :パスワード %>
-        <%= f.password_field :password, class:"form-control input-lg", id:"input_field" %>
-      </div>
+    <div class="form-group">
+      <%= f.label :パスワード %>
+      <%= f.password_field :password, class:"form-control input-lg", id:"input_field" %>
+    </div>
 
-      <div class="form-group">
-        <%= f.check_box :remember_me %>
-        <span>アプリへのログイン状態を継続します</span>
-      </div>
+    <div class="form-group">
+      <%= f.check_box :remember_me %>
+      <span>アプリへのログイン状態を継続します</span>
+    </div>
 
-      <%= f.submit "ログイン", class:"btn btn-primary btn-lg" %>
-    <% end %>
-  </div>
-</div>
-</div>
-<br>
-<br>
+    <%= f.submit "ログイン", class:"btn btn-primary btn-lg" %>
+  <% end %>
+  <br>
+  <br>
 
-<div class="col-md-6 col-md-offset-3">
-<p>初めてこのアプリを使う方は <%= link_to "こちら", signup_path %>で登録をしてください。</p>
-<%= link_to "＜＜前の画面に戻る", root_path %>
-</div>
+  <p>初めてこのアプリを使う方は <%= link_to "こちら", signup_path %>でアカウ>ントを作成してください。</p>
+  <%= link_to "＜＜トップページに戻る", root_path %>
 
-</div>
+</div> <%# グリッドシステム%>
+</div>  <%# ページ全体を囲むコンテナ%>

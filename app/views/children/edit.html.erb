@@ -4,7 +4,7 @@
   <h2 class="text-center">子どもの設定変更</h2>
 
   <%= form_for(@child, url:child_path) do |form| %>
-  <%= render "shared/error_messages_for_new_child" %>
+  <%= render "shared/error_messages", object: form.object %>
 
   <div class="form-group", id="form_margin">
     <%= form.label :名前 %>
@@ -25,22 +25,22 @@
 
   <div class="form-group", id="form_margin">
     <%= form.label :性別 %><br>
-    <label class="radio-inline"><%= form.radio_button :sex, "男の子" %> 男の子 </label>
-    <label class="radio-inline"><%= form.radio_button :sex, "女の子" %> 女の子</label>
-    <label class="radio-inline"><%= form.radio_button :sex, "その他" %> その他</label>
+    <label class="radio-inline"><%= form.radio_button :sex, "男の子" %> 男の>子 </label>
+    <label class="radio-inline"><%= form.radio_button :sex, "女の子" %> 女の>子</label>
+    <label class="radio-inline"><%= form.radio_button :sex, "その他" %> その>他</label>
   </div>
 
-  <div class="form-group", id="form_margin">
-    <%= form.label :誕生日 %><br>
-    <%= form.date_select :birthday, class:"form-control input-lg" %>
-  </div>
+    <div class="form-group", id="form_margin">
+      <%= form.label :誕生日 %><br>
+      <%= form.date_select :birthday, class:"form-control input-lg" %>
+    </div>
 
-  <div class="form-group", id="form_margin">
-  <%= form.submit "設定を変更", class:"btn btn-primary btn-lg" %>
-  </div>
+    <div class="form-group", id="form_margin">
+    <%= form.submit "設定を変更", class:"btn btn-primary btn-lg" %>
+    </div>
 
-  <% end %>
-  <%= link_to "＜＜前の画面に戻る", child_path %>
+    <% end %>
+    <%= link_to "＜＜前の画面に戻る", child_path %>
 
-</div> <%# グリッドシステム%>
-</div>  <%# ページ全体を囲むコンテナ%>
+  </div> <%# グリッドシステム%>
+  </div>  <%# ページ全体を囲むコンテナ%>

@@ -1,24 +1,38 @@
-# README
+# 子育て共有アプリ
+小さな子どもを持つ親が抱える３つの悩みを解消することを目標としたアプリケーシ>ョンです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* 悩み１　子どもの写真を撮りすぎてしまうけど、整理するのが面倒
+ * アルバム(画像・文字)投稿機能、身長・体重(グラフ)の投稿機能
 
-Things you may want to cover:
+* 悩み２　祖父母から頻繁に「孫の写真を送れ」と督促を受ける
+ * 別の保護者(ユーザー)との連携機能
 
-* Ruby version
+* 悩み３　記録を残すことをついつい忘れてしまう
+ * 設定時刻になった際のユーザーへの通知機能(2019.10.15現在、作成中)
 
-* System dependencies
+# アプリケーションURL
+https://childport.net/
 
-* Configuration
+# 使用技術一覧
+* Ruby：2.6.2
+* Rails：5.2.3
+* AWS(EC2、RDS、S3、VPC、Route53、SES、ALB、ACM)
+* Unicorn
+* nginx
+* minitest
+* rubocop
 
-* Database creation
+# 機能一覧
+* ユーザー登録、ログイン機能全般
+* 画像アップロード機能全般
+* 記事投稿機能(CRUD)
+* 記事一覧表示の際のページネーション機能
+* 身長・体重のグラフ表示機能(chart.js)
+* パスワード認証による別の保護者(ユーザー)との連携機能
+* メールによるパスワード送付機能
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 取り組んでいる課題
+* 一番上に記載した「設定時刻になった際のユーザーへの通知機能」への実装(AWS LambdaとLINE Notifyを想定)
+* Google Maps Javascript APIを使用した機能の実装
+* CI/CDパイプラインの実装(https://aws.amazon.com/jp/getting-started/projects/set-up-ci-cd-pipeline/)
+* Git・Githubの操作の勉強
