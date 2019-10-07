@@ -30,7 +30,9 @@ class GrowthsController < ApplicationController
 
   def detail
     @child = Child.find(session[:child_id])
-    @growths = @child.growths
+    @search_params = growth_search_params
+    @growths = @child.growths.search(@search_params)
+                     .paginate(page: params[:page], per_page: 5)
   end
 
   def edit
@@ -56,6 +58,10 @@ class GrowthsController < ApplicationController
   end
 
   private
+
+  def growth_search_params
+    params.fetch(:search, {}).permit(:date_from, :date_to, :name)
+  end
 
   def growth_params
     params.require(:growth).permit(:date, :height, :weight, :child_id, :user_id)

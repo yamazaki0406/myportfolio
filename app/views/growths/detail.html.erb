@@ -1,34 +1,48 @@
 <div class="container">  <%# ページ全体を囲むコンテナ%>
 <div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
 
-  <h2 class="text-center">身長・体重の修正</h2>
+  <h2 class="text-center">身長・体重の修正</h2><br>
 
-<table class="table">
-   <thead>
-     <tr>
-       <th>測定した日</th>
-       <th>身長(cm)</th>
-       <th>体重(kg)</th>
-       <th>修正</th>
-       <th>削除</th>
-     </tr>
-   </thead>
-   <tbody>
-     <% @growths.each do |form| %>
-      <tr>
-      <td><%= form.date.strftime("%Y年%m月%d日")  %></td>
-      <td><%= form.weight %></td>
-      <td><%= form.height %></td>
-      <% if form.user_id == session[:user_id] %>
+  <div class="search-form">
+    <%= form_with(scope: :search, url: detail_growth_path, method: :get, local: true) do |form| %>
+    <div class="form-group">
+        <%= form.label:測定日 %>
+        <%= form.date_field :date_from, value: @search_params[:date_from] %> ~ <%= form.date_field :date_to, value: @search_params[:date_to] %>
+        <%= form.submit "検索", class:"btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
 
-      <td><%= link_to '修正', edit_growth_path(form) %></td>
-      <td><%= link_to '削除', growth_path(form), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
-<% end %>
-     </tr>
-     <% end %>
-   </tbody>
-</table>
-<%= link_to '＜＜グラフのページに戻る', growths_path %>
+  <table class="table">
+     <thead>
+       <tr>
+         <th>測定した日</th>
+         <th>身長(cm)</th>
+         <th>体重(kg)</th>
+         <th>投稿者</th>
+         <th>修正</th>
+         <th>削除</th>
+       </tr>
+     </thead>
+     <tbody>
+       <% @growths.each do |form| %>
+        <tr>
+        <td><%= form.date.strftime("%Y年%m月%d日")  %></td>
+        <td><%= form.weight %></td>
+        <td><%= form.height %></td>
+        <td><%= User.find(form.user_id).name %></td>
+        <% if form.user_id == session[:user_id] %>
+          <td><%= link_to '修正', edit_growth_path(form) %></td>
+          <td><%= link_to '削除', growth_path(form), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        <% end %>
+       </tr>
+       <% end %>
+     </tbody>
+  </table>
+
+  <%= will_paginate @growths, :renderer => BootstrapPagination::Rails %><br>
+
+  <%= link_to '＜＜グラフのページに戻る', growths_path %>
 
 </div> <%# グリッドシステム%>
 </div>  <%# ページ全体を囲むコンテナ%>

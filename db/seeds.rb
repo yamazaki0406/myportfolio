@@ -55,74 +55,74 @@ Family.create!([{ user_id: 1, child_id: 1 },
                 { user_id: 2, child_id: 6 }])
 
 10.times do |i|
-  Micropost.create!( user_id: 2,
-                     child_id: 3,
-                     created_at: "2019-09-#{i * 2} 14:56:44",
-                     content: "サンプルです。" * 40)
+  Micropost.create!(user_id: 2,
+                    child_id: 3,
+                    created_at: "2019-09-#{i * 2} 14:56:44",
+                    content: 'サンプルです。' * 40)
 end
 
 5.times do |i|
   Micropost.create!(user_id: 3,
                     child_id: 3,
                     created_at: "2019-09-#{i * 4} 14:56:44",
-                    content: "別ユーザーの投稿です。" * 20)
+                    content: '別ユーザーの投稿です。' * 20)
 end
 
 10.times do |i|
-  Micropost.create!( user_id: 2,
-                     child_id: 4,
-                     created_at: "2019-09-#{i * 2} 14:56:44",
-                     content: "サンプルです。" * 40)
+  Micropost.create!(user_id: 2,
+                    child_id: 4,
+                    created_at: "2019-09-#{i * 2} 14:56:44",
+                    content: 'サンプルです。' * 40)
 end
 
 5.times do |i|
   Micropost.create!(user_id: 3,
                     child_id: 4,
                     created_at: "2019-09-#{i * 4} 14:56:44",
-                    content: "別ユーザーの投稿です。" * 20)
+                    content: '別ユーザーの投稿です。' * 20)
 end
 
 10.times do |i|
-  Micropost.create!( user_id: 2,
-                     child_id: 5,
-                     created_at: "2019-09-#{i * 2} 14:56:44",
-                     content: "サンプルです。" * 40)
+  Micropost.create!(user_id: 2,
+                    child_id: 5,
+                    created_at: "2019-09-#{i * 2} 14:56:44",
+                    content: 'サンプルです。' * 40)
 end
 
 5.times do |i|
   Micropost.create!(user_id: 3,
                     child_id: 5,
                     created_at: "2019-09-#{i * 4} 14:56:44",
-                    content: "別ユーザーの投稿です。" * 20)
+                    content: '別ユーザーの投稿です。' * 20)
 end
 
 10.times do |i|
-  Micropost.create!( user_id: 2,
-                     child_id: 5,
-                     created_at: "2019-09-#{i * 2} 14:56:44",
-                     content: "サンプルです。" * 40)
+  Micropost.create!(user_id: 2,
+                    child_id: 5,
+                    created_at: "2019-09-#{i * 2} 14:56:44",
+                    content: 'サンプルです。' * 40)
 end
 
 9.times do |i|
-  Growth.create!( date: "2019-0#{i + 1}-01",
-                  height: Random.rand(100 .. 120),
-                  weight: Random.rand(20 .. 30),
-                  child_id: 3,
-                  user_id: 2)
+  Growth.create!(date: "2019-0#{i + 1}-01",
+                 height: Random.rand(100..120),
+                 weight: Random.rand(20..30),
+                 child_id: 3,
+                 user_id: 2)
 end
 
 9.times do |i|
-  Growth.create!( date: "2019-0#{i + 1}-01",
-                  height: Random.rand(70 .. 90),
-                  weight: Random.rand(15 .. 20),
-                  child_id: 4,
-                  user_id: 2)
+  Growth.create!(date: "2019-0#{i + 1}-01",
+                 height: Random.rand(70..90),
+                 weight: Random.rand(15..20),
+                 child_id: 4,
+                 user_id: 2)
 end
 
 9.times do |i|
-  Growth.create!( date: "2019-0#{i + 1}-01",
-                  height: Random.rand(60 .. 80),
-                  weight: Random.rand(10 .. 20),
-                  child_id: 5,
-                  user_id: 2)
+  Growth.create!(date: "2019-0#{i + 1}-01",
+                 height: Random.rand(60..80),
+                 weight: Random.rand(10..20),
+                 child_id: 5,
+                 user_id: 2)
 end
