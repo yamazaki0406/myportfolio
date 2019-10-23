@@ -27,7 +27,7 @@ https://childport.net/
 
 ◎身長・体重のグラフ表示機能(chart.js)◎
 * 「身長・体重」というボタンから、グラフを入力・表示することができます。
-* 入力したデータは検索・編集・削除ができます。
+* 入力したデータはカレンダーを使って検索をした後、編集・削除ができます。
 
 ◎子ども別のデータ管理機能◎
 * 一人のユーザーが複数の子どものデータを持つことができ「各種設定」→「子どもの一覧」から表示を切り替えることができます。
@@ -40,6 +40,6 @@ https://childport.net/
 
 # 取り組んでいる課題
 * 定刻にユーザーへ通知を送る機能の実装(AWS LambdaとLINE Notifyを想定)
-* CI/CDパイプラインの実装(https://aws.amazon.com/jp/getting-started/projects/set-up-ci-cd-pipeline/)
+* CI/CDパイプラインの実装
 * Google Maps Javascript APIを使用した機能の実装
 * Git操作の勉強
