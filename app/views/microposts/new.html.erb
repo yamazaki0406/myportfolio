@@ -1,29 +1,46 @@
 <div class="container">  <%# ページ全体を囲むコンテナ%>
-<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
-
-  <h2 class="text-center">アルバムを作成する</h2>
+<br>
+<h2 class="text-center">アルバムを作成する</h2>
+<br>
+<div class="col-md-offset-3 col-md-6 well"> <%# グリッドシステム%>
   <%= form_for(@micropost) do |form| %>
   <%= render "shared/error_messages", object: form.object %>
+  <br>
 
-    <div class="form-group", id:"input_field">
+    <div class="form-group">
       <%= form.label :今日の出来事 %><br>
       <%= form.text_area :content, class:"form-control", size:"20x10", id: "input-text" %>
       <p id="counter">残り300文字</p>
     </div>
+    <br>
 
-    <div class="form-group", id:"input_field">
-      <%= form.label :写真 %><br>
-      <%= form.file_field :images, multiple: true %>
+    <div class="field image">
+      <%= form.label '写真' %>
+      <div id="img_field" onClick="$('#file').click()" >
+        <% if @micropost.images.attached? %>
+          <% @micropost.images.each do |image| %>
+            <%= image_tag image.variant(resize: "300x300") %>
+          <% end %>
+        <% else %>
+          <div class="text-center"><%= fa_icon("file-image-o") %></div>
+        <% end %>
+      </div>
+      <%= form.file_field :images, multiple: true, style: "display:none;", id: "file"%>
     </div>
 
     <%= form.hidden_field :user_id, value:session[:user_id] %>
+    <br>
 
-    <div class="form-group", id:"input_field">
-      <%= form.submit "アルバムを追加", class:"btn btn-primary" %>
-    </div>
+    <%= button_tag :type => "submit", :class =>"button" do %>
+      <%= fa_icon("pencil-square-o") %> アルバムを追加
+    <% end %>
 
   <% end %>
-  <%= link_to '＜＜アルバム一覧に戻る', microposts_path %><br>
+  <br><br>
+
+  <%= link_to microposts_path do %>
+    <%= fa_icon("backward") %> アルバム一覧に戻る
+  <% end %>
 
 </div> <%# グリッドシステム%>
-</div>  <%# ページ全体を囲むコンテナ%>
+</div> <%# ページ全体を囲むコンテナ%>

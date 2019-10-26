@@ -1,9 +1,13 @@
-<div class="container"> <%# ページ全体を囲むコンテナ%>
+<div class="container">  <%# ページ全体を囲むコンテナ%>
+<br>
 <div class="col-md-offset-3 col-md-6"> <%# グリッドシステム%>
 
-  <h2 id="page_title">アルバム</h2>
-  <p>子どもの毎日の成長を記録しましょう。</p>
-  <%= link_to '記事を追加', new_micropost_path, class:"btn btn-primary"  %>
+  <h2 class="text-center" id="page_title">アルバム</h2>
+  <p class="text-center">子どもの毎日の成長を記録しましょう。</p>
+
+  <%= link_to new_micropost_path, class:"button" do %>
+    <%= fa_icon("pencil-square-o") %> 記事を追加
+  <% end %>
   <br>
 
   <% @microposts.each do |form| %>
@@ -30,6 +34,13 @@
     </div>
   <% end %>
 
-  <%= will_paginate @microposts, :renderer => BootstrapPagination::Rails %>
+  <%= will_paginate @microposts, :renderer => BootstrapPagination::Rails %>　
+  <br>
+
+  <%= link_to child_path(session[:child_id]) do %>
+    <%= fa_icon("backward") %> トップページに戻る
+  <% end %>
+  <br><br>
+
 </div> <%# グリッドシステム%>
 </div> <%# ページ全体を囲むコンテナ%>

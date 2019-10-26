@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" id="header">
 <div class="container-fluid">
   <div class="navbar-header">
   <%= link_to "ログイン名：" + User.find(session[:user_id]).name, child_path(session[:child_id]), class: "navbar-brand" %>

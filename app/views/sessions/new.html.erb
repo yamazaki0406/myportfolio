@@ -1,8 +1,10 @@
 <div class="container">  <%# ページ全体を囲むコンテナ%>
-<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
+<br><br>
 
-  <h2 class="text-center">ログイン</h2>
-  <p class="text-center">登録したアドレスとパスワードを入力してください。</p>
+<h2 class="text-center">ログイン</h2>
+<p class="text-center">登録したアドレスとパスワードを入力してください。</p>
+
+<div class="col-md-offset-4 col-md-4 well"> <%# グリッドシステム%>
 
   <%= form_for(:session, url: login_path) do |f| %>
     <div class="form-group">
@@ -19,14 +21,17 @@
       <%= f.check_box :remember_me %>
       <span>アプリへのログイン状態を継続します</span>
     </div>
+    <%= button_tag :type => "submit", :class =>"button" do %>
+      <%= fa_icon("sign-in") %> ログイン
+    <% end %>
 
-    <%= f.submit "ログイン", class:"btn btn-primary btn-lg" %>
   <% end %>
-  <br>
-  <br>
+  <br><br>
 
-  <p>初めてこのアプリを使う方は <%= link_to "こちら", signup_path %>でアカウ>ントを作成してください。</p>
-  <%= link_to "＜＜トップページに戻る", root_path %>
+  <p>初めてこのアプリを使う方は <%= link_to "こちら", signup_path %>でアカウントを作成してください。</p>
+  <%= link_to root_path do %>
+    <%= fa_icon("backward") %> トップページに戻る
+  <% end %>
 
 </div> <%# グリッドシステム%>
 </div>  <%# ページ全体を囲むコンテナ%>

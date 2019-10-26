@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  layout 'top_page'
+  layout 'headerless_layout'
 
   def new; end
 

@@ -10,7 +10,7 @@ class FamilysController < ApplicationController
   end
 
   def new
-    render layout: 'top_page'
+    render layout: 'headerless_layout'
   end
 
   def create
@@ -24,11 +24,11 @@ class FamilysController < ApplicationController
         redirect_to @child
       else
         flash[:danger] = '子どもの名前もしくはIDに誤りがあります！'
-        render 'new', layout: 'top_page'
+        render 'new', layout: 'headerless_layout'
       end
     else
       flash[:danger] = 'パスワードに誤りがあります！'
-      render 'new', layout: 'top_page'
+      render 'new', layout: 'headerless_layout'
     end
   end
 

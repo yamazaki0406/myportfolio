@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class TopsController < ApplicationController
-  layout 'top_page'
+  layout 'title_page_layout'
   def index; end
 end

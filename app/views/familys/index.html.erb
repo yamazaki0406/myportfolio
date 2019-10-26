@@ -1,9 +1,10 @@
-<div class="container">  <%# ページ全体を囲むコンテナ%>
-<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
+<div class="container" id="main_background">  <%# ページ全体を囲むコンテナ%>
+<br><br>
 
   <h2 class="text-center">別のユーザーと連携</h2>
   <p class="text-center">別の保護者(ユーザー)と子どもを共有することができます。</p><br>
 
+  <div class="col-md-offset-4 col-md-4 well"> <%# グリッドシステム%>
 
   <h3>子どものデータを送る</h3>
     <table class="table">
@@ -18,9 +19,12 @@
     </table>
 
     <h3>子どものデータを受け取る</h3>
-      <%= link_to '入力画面へ', new_family_path, class:"btn btn-primary btn-lg" %><br><br><br>
 
-  <%= link_to '＜＜前のページに戻る', edit_path %>
+      <%= link_to '入力画面へ', new_family_path, class:"button" %><br><br><br>
+
+  <%= link_to edit_path do %>
+    <%= fa_icon("backward") %> 前のページに戻る
+  <% end %>
 
 </div> <%# グリッドシステム%>
 </div>  <%# ページ全体を囲むコンテナ%>

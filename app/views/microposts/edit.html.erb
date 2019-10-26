@@ -1,32 +1,47 @@
-<div class="container">  <%# ページ全体を囲むコンテナ%>
-<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
-
+<div class="container" id="main_background">  <%# ページ全体を囲むコンテナ%>
+<br>
 <h2 class="text-center">記事の編集</h2>
+<br>
+
+<div class="col-md-offset-3 col-md-6 well"> <%# グリッドシステム%>
+
   <%= form_for(@micropost) do |form| %>
   <%= render "shared/error_messages", object: form.object %>
 
   <div class="form-group", id:"input_field">
     <%= form.label :今日の出来事 %><br>
-    <%= form.text_area :content, class:"form-control", size:"20x10" %>
+    <%= form.text_area :content, class:"form-control", size:"20x10", id: "input-text" %>
+    <p id="counter">残り300文字</p>
   </div>
 
-  <div class="form-group", id:"input_field">
-    <%= form.label :写真 %><br>
-    <% if @micropost.images.attached? %>
-      <% @micropost.images.each do |image| %>
-        <%= image_tag image.variant(resize:'200x200') %>
-        <%= link_to '削除する', purge_micropost_path(@micropost), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+  <div class="field image">
+    <%= form.label '写真' %>
+    <div id="img_field" onClick="$('#file').click()" >
+      <% if @micropost.images.attached? %>
+        <% @micropost.images.each do |image| %>
+          <%= image_tag image.variant(resize: "300x300") %>
         <% end %>
       <% else %>
-          <%= form.file_field :images, multiple: true %>
+        <div class="text-center"><%= fa_icon("file-image-o") %></div>
       <% end %>
     </div>
+    <% if @micropost.images.attached? %>
+      <%= link_to '削除する', purge_micropost_path(@micropost), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+    <% end %>
+    <%= form.file_field :images, multiple: true, style: "display:none;", id: "file"%>
+  </div>
+  <br>
 
-    <%= form.submit "記事を編集", class:"btn btn-primary" %>
-  <% end %><br>
+  <%= button_tag :type => "submit", :class =>"button" do %>
+    <%= fa_icon("pencil-square-o") %> 修正する
+  <% end %>
 
-  <%= link_to '＜＜アルバム一覧に戻る', microposts_path %><br>
-  <%= link_to '＜＜子どものページに戻る', child_path(@child) %>
+  <% end %>
+  <br>
+
+  <%= link_to microposts_path do %>
+    <%= fa_icon("backward") %> アルバム一覧に戻る
+  <% end %>
 
 </div> <%# グリッドシステム%>
 </div>  <%# ページ全体を囲むコンテナ%>
