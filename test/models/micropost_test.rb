@@ -13,7 +13,7 @@ class MicropostTest < ActiveSupport::TestCase
     assert @micropost.valid?
   end
 
-  test 'child is should be present' do
+  test 'child should be present' do
     @micropost.child_id = nil
     assert_not @micropost.valid?
   end

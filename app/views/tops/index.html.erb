@@ -9,9 +9,9 @@
      <%= link_to "アカウントの新規作成", signup_path, class:"button text-center", id:"top_nav_list" %>
      <%= link_to "ログイン", login_path, class:"button text-center", id:"top_nav_list" %>
      <%= form_for(:session, url: login_path, html:{id:"top_nav_list"}) do |f| %>
-     <%= f.hidden_field :email, id:"input_field", value: "sample@example.jp"%>
-     <%= f.hidden_field :password, id:"input_field", value: "aaaaaa"%>
-     <%= f.submit "簡単ログイン", class:"button", id:"easy_login"%>
+       <%= f.hidden_field :email, id:"input_field", value: "sample@example.jp"%>
+       <%= f.hidden_field :password, id:"input_field", value: "aaaaaa"%>
+       <%= f.submit "簡単ログイン", class:"button", id:"easy_login"%>
      <% end %>
   </div>
 

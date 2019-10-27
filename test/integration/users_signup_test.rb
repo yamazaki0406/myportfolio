@@ -30,6 +30,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert is_logged_in?
     assert_not flash.empty?
   end
+
   test 'invalid & valid create a child' do
     log_in_as(@user)
     # ここから無効な子どもの登録テスト

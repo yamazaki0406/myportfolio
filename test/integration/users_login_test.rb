@@ -18,7 +18,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
 
-  test 'login with valid information without & with a child) ' do
+  test 'login with(without) child) ' do
     # 子どもを登録していない状態でのログイン～ログアウト
     get login_path
     post login_path, params: { session: { email: @user.email,

@@ -9,10 +9,15 @@ class Child < ApplicationRecord
 
   validates :name,     presence: true, length: { maximum: 50 }
   validates :sex,      presence: true
-  validates :user_id,  presence: true
+  validates :birthday, presence: true
+  validates :user_id, presence: true
   validate :date_check
 
   def date_check
-    errors.add(:birthday, 'の入力内容に誤りがあります。') unless birthday <= Date.today
+    if birthday.blank?
+      nil
+    else
+      errors.add(:birthday, 'の入力内容に誤りがあります。') unless birthday <= Date.today
+    end
   end
 end

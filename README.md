@@ -13,6 +13,7 @@ https://childport.net/
 * Unicorn
 * nginx
 * minitest
+* RSpec(現在、minitestからテストを書き換え中です。)
 * rubocop
 
 # 機能一覧
@@ -39,7 +40,7 @@ https://childport.net/
 * また、上記の「アルバム」や「身長・体重」の項目の編集権限を作成者に限定しているため、連携したユーザーに編集・削除される心配もありません。
 
 # 取り組んでいる課題
-* 定刻にユーザーへ通知を送る機能の実装(AWS LambdaとLINE Notifyを想定)
+* ローカル環境でDockerを用いた開発環境の構築
 * CI/CDパイプラインの実装
+* 定刻にユーザーへ通知を送る機能の実装(AWS LambdaとLINE Notifyを想定)
 * Google Maps Javascript APIを使用した機能の実装
-* Git操作の勉強
