@@ -6,7 +6,7 @@
   <div id="static_edit_menu">
     <%= link_to 'ユーザーの設定変更', edit_user_path(session[:user_id]), class:"button text-center", id:"static_edit_list" %>
     <%= link_to '子どもの設定変更', edit_child_path(session[:child_id]), class:"button text-center", id:"static_edit_list" %>
-    <%= link_to '別のユーザーと連携', familys_path, class:"button text-center", id:"static_edit_list" %>
+    <%= link_to '別のユーザーと連携', families_path, class:"button text-center", id:"static_edit_list" %>
     <%= link_to '子どもの一覧', user_path(session[:user_id]), class:"button text-center", id:"static_edit_list" %>
     <%= link_to "新しい子どもを登録", new_child_path, class:"button text-center", id:"static_edit_list" %>
     <%= link_to "ログアウト", logout_path, method: :delete, class:"button text-center", id:"static_edit_list" %>

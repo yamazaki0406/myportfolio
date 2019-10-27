@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FamilysController < ApplicationController
+class FamiliesController < ApplicationController
   before_action :parent_user, only: :show
   before_action :address_blank_check, only: :share
 
@@ -41,7 +41,7 @@ class FamilysController < ApplicationController
                            params[:id],
                            params[:address]).deliver_now
     flash[:success] = 'メールを送信しました'
-    redirect_to familys_url
+    redirect_to families_url
   end
 
   private

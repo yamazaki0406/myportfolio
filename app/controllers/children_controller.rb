@@ -13,7 +13,7 @@ class ChildrenController < ApplicationController
     if @child.save
       @user.children << @child
       flash[:success] = '子どもの登録が完了しました！'
-      select_a_child @child
+      select_child @child
       redirect_to @child
     else
       render 'new', layout: 'headerless_layout'
@@ -27,7 +27,7 @@ class ChildrenController < ApplicationController
     birthday = @birthday.to_date
     @age = (Date.today.strftime(date_format).to_i -
             birthday.strftime(date_format).to_i) / 10_000
-    select_a_child(@child)
+    select_child(@child)
   end
 
   def edit

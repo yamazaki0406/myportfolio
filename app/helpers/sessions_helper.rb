@@ -5,7 +5,7 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
-  def select_a_child(child)
+  def select_child(child)
     session.delete(:child_id) unless session[:child_id].nil?
     session[:child_id] = child.id
     # もし、子どものセッションを持っていたらセッションを切る
@@ -13,7 +13,7 @@ module SessionsHelper
     # 新しく入っているセッションにリダイレクトする
   end
 
-  def change_a_child; end
+  def change_child; end
 
   def remember(user)
     user.remember
@@ -53,7 +53,7 @@ module SessionsHelper
     @current_user = nil
   end
 
-  def release_a_child
+  def release_child
     session.delete(:child_id)
   end
 end

@@ -9,7 +9,7 @@
   <p class="text-center">別のユーザーから送られたデータを入力すると、子どもを共有することができます。</p><br>
 
 <div class="col-md-offset-4 col-md-4 well"> <%# グリッドシステム%>
-  <%= form_with scope: :family, url:familys_path, local:true do |form| %>
+  <%= form_with scope: :family, url:families_path, local:true do |form| %>
     <div class="form-group">
       <%= form.label :子どものID %>
       <%= form.number_field :child_id, class:"form-control" %>
@@ -35,7 +35,7 @@
   <% end %>
 　<br><br>
 
-<%= link_to familys_path do %>
+<%= link_to families_path do %>
   <%= fa_icon("backward") %> 前のページに戻る
 <% end %>
 
