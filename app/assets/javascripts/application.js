@@ -11,15 +11,11 @@
 // about supported directives.
 //
 //= require Chart.min
-//= require rails-ujs
 //= require jquery
+//= require rails-ujs
 //= require bootstrap
 //= require moment
 //= require bootstrap-datetimepicker
 //= require turbolinks
 //= require activestorage
 //= require_tree .
-
-$(function(){
-  setTimeout("$('.time-limit').fadeOut('slow')", 5000)
-})

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_many :familys
+  has_many :families
   has_many :children, through: :familys
   has_many :microposts
   has_many :growths

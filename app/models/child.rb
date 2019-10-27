@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Child < ApplicationRecord
-  has_many :familys
+  has_many :families
   has_many :users, through: :familys
   has_many :growths
   has_many :microposts, dependent: :destroy
