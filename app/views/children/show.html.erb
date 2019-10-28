@@ -1,5 +1,4 @@
 <div class="container"> <%# ページ全体を囲むコンテナ%>
-<br>
 
   <div class="row">
     <h2 class="text-center">
@@ -18,29 +17,32 @@
       <% end %>
     <% else %>
       <% if @child.sex == "男の子" %>
-        <h2 id="child_image"><%= fa_icon("child 5x") %>No Image</h2>
+        <h2 id="child_non_img"><%= fa_icon("child 5x") %>No Image</h2>
       <% else %>
-        <h2 id="child_image"><%= fa_icon("female 5x") %>No Image</h2>
+        <h2 id="child_non_img"><%= fa_icon("female 5x") %>No Image</h2>
       <% end %>
     <% end %>
   </div>
 
   <div class="row">
-    <h3 class="text-center"><%= @age %>歳</h3>
+    <h3 class="child_age text-center"><%= @age %>歳</h3>
   </div>
 <br>
 
-<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
+<div class="col-md-offset-3 col-md-6"> <%# グリッドシステム%>
   <div class="child_list">
-    <%= link_to microposts_path, class:"child_button" do %>
-      <%= fa_icon("book") %> アルバムを書く
-    <% end %>
-    <%= link_to growths_path, class:"child_button" do %>
-      <%= fa_icon("bar-chart") %> 身長・体重を測る
-    <% end %>
-    <%= link_to edit_path, class:"child_button" do %>
-      <%= fa_icon("file") %> 各種設定
-    <% end %>
+    <div class="child_button_set">
+      <%= link_to microposts_path, class:"child_button" do %><span><%= fa_icon("book 3x") %><span><% end %>
+      <h5 class="text-center">アルバムを書く</h5>
+    </div>
+    <div class="child_button_set">
+      <%= link_to growths_path, class:"child_button" do %><span><%= fa_icon("bar-chart 3x") %> </span><% end %>
+      <h5 class="text-center">身長・体重を測る</h5>
+    </div>
+    <div class="child_button_set">
+      <%= link_to edit_path, class:"child_button" do %><span><%= fa_icon("file 3x") %></span><% end %>
+      <h5 class="text-center">各種設定</h5>
+    </div>
   </div>
 </div>
 

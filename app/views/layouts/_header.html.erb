@@ -1,7 +1,11 @@
-<nav class="navbar navbar-default" id="header">
+<nav class="navbar navbar-default ribbon-wrapper">
 <div class="container-fluid">
   <div class="navbar-header">
-  <%= link_to "ログイン名：" + User.find(session[:user_id]).name, child_path(session[:child_id]), class: "navbar-brand" %>
+      <span class="ribbon-left"><%= fa_icon("paw") %></span>
+      <div>
+        <%= link_to "あなたのお名前：" + User.find(session[:user_id]).name + " さん", child_path(session[:child_id]), class: "navbar-brand" %>
+      </div>
+      <span class="ribbon-right"><%= fa_icon("paw") %></span>
 </div>
 </div>
 </nav>
