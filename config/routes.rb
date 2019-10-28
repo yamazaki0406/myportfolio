@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'maps/index'
+  get 'maps/new'
+  get 'maps/show'
+  get 'maps/edit'
  root "tops#index"
  get "/edit", to: "static_pages#edit"
  get "/signup", to: "users#new"

@@ -8,9 +8,35 @@
   font-family: 'Kosugi Maru', sans-serif;
 }
 
-h1, h2, h5, .child_age{
+h1, h5, .child_age{
   font-weight: bold;
 }
+
+h2{
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+  .test{
+    /*ここからアルバムのタブ*/
+    background-color: gray;
+    border: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+    color: white
+  }
+/*ここまでアルバムのタブ*/
+
+.pyonpyon span {
+    animation: pyon 0.3s linear;
+    position: relative;
+}
+
+@keyframes pyon {
+    0% {top: 0}
+    50% {top:-30px}
+    100%{top: 0}
+}
+
 
 /*ここからトップページのタイトル・サブタイトル*/
   @media screen and (min-width: 767px) {
@@ -227,8 +253,6 @@ h1, h2, h5, .child_age{
     border-bottom: 10px solid transparent;
   }
 /*ここまでヘッダーのスタイル*/
-
-
 
 #img_field {
   font-size: 15px;
