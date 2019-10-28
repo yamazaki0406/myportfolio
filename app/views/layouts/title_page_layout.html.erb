@@ -13,7 +13,7 @@
     <%= render "layouts/shim" %>
   </head>
 
-  <body>
+  <body class="top_page_body">
     <% flash.each do |message_type,message| %>
       <div class="flash time-limit">
         <div class="alert alert-<%= message_type %>", id="alert"><%= message %></div>

@@ -5,13 +5,24 @@
   <h3 id="top_sub_titie">～日々の成長を記録しよう～</h3>
   <br>
 
+  <div class="background_photo">
+    <%= image_tag 'family_smile.jpg', class:"photo", id:"content1" %>
+    <%= image_tag 'father_child.png', class:"photo", id:"content2" %>
+    <%= image_tag 'crying_child.jpg', class:"photo", id:"content3" %>
+    <%= image_tag 'child_fallen_leaves.jpg', class:"photo", id:"content4" %>
+    <%= image_tag 'child_zoo.jpg', class:"photo", id:"content5" %>
+    <%= image_tag 'child_sleep.jpg', class:"photo", id:"content6" %>
+    <%= image_tag 'child_smile_summer.jpeg', class:"photo", id:"content7" %>
+  </div>
+
+
   <div class="top_nav_bar col-md-offset-3 col-md-6">
-     <%= link_to "アカウントの新規作成", signup_path, class:"button text-center", id:"top_nav_list" %>
-     <%= link_to "ログイン", login_path, class:"button text-center", id:"top_nav_list" %>
+     <%= link_to "アカウントの新規作成", signup_path, class:"buttons text-center", id:"top_nav_list" %>
+     <%= link_to "ログイン", login_path, class:"buttons text-center", id:"top_nav_list" %>
      <%= form_for(:session, url: login_path, html:{id:"top_nav_list"}) do |f| %>
        <%= f.hidden_field :email, id:"input_field", value: "sample@example.jp"%>
        <%= f.hidden_field :password, id:"input_field", value: "aaaaaa"%>
-       <%= f.submit "簡単ログイン", class:"button", id:"easy_login"%>
+       <%= f.submit "簡単ログイン", class:"buttons", id:"easy_login"%>
      <% end %>
   </div>
 

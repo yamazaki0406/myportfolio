@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
   has_many :families
-  has_many :children, through: :familys
+  has_many :children, through: :families
   has_many :microposts
   has_many :growths
 
