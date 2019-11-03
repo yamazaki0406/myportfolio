@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       if user.children.count != 0
         child = user.children.first
-        select_a_child child
+        select_child child
         redirect_to child_path(session[:child_id])
       else
         redirect_to new_child_url
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    release_a_child
+    release_child
     redirect_to root_url
   end
 end

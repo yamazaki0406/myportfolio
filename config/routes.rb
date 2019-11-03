@@ -17,7 +17,7 @@ Rails.application.routes.draw do
    delete :purge, on: :member
  end
 
- resources :familys do
+ resources :families do
    post :share, on: :member
  end
 end
