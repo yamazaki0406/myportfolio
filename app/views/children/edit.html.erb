@@ -1,46 +1,54 @@
-<div class="container">  <%# ページ全体を囲むコンテナ%>
-<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
+<div class="container" id="main_background">  <%# ページ全体を囲むコンテナ%>
 
-  <h2 class="text-center">子どもの設定変更</h2>
+<h2 class="text-center">子どもの設定変更</h2><br>
 
+<div class="col-md-offset-3 col-md-6 well"> <%# グリッドシステム%>
   <%= form_for(@child, url:child_path) do |form| %>
   <%= render "shared/error_messages", object: form.object %>
 
-  <div class="form-group", id="form_margin">
+  <div class="form-group">
     <%= form.label :名前 %>
     <%= form.text_field :name, class:"form-control input-lg", id:"input_field" %>
   </div>
 
   <div class="form-group", id="form_margin">
-    <%= form.label :子どもの写真 %><br>
-    <% if @child.images.attached? %>
-      <% @child.images.each do |image| %>
-      <%= image_tag image.variant(resize:'400x400'), class:"img-circle", id:"child_img" %>
-      <%= link_to '削除する', purge_child_path(@child), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+    <%= form.label '子どもの写真' %>
+    <div id="img_field" onClick="$('#file').click()" >
+      <% if @child.images.attached? %>
+        <% @child.images.each do |image| %>
+          <%= image_tag image.variant(resize: "150x150") %>
+        <% end %>
+      <% else %>
+        <div class="text-center"><%= fa_icon("file-image-o") %></div>
       <% end %>
-    <% else %>
-        <%= form.file_field :images, multiple: true %>
-    <% end %>
+    </div>
+    <%= form.file_field :images, multiple: true, style: "display:none;", id: "file"%>
   </div>
 
   <div class="form-group", id="form_margin">
     <%= form.label :性別 %><br>
-    <label class="radio-inline"><%= form.radio_button :sex, "男の子" %> 男の>子 </label>
-    <label class="radio-inline"><%= form.radio_button :sex, "女の子" %> 女の>子</label>
-    <label class="radio-inline"><%= form.radio_button :sex, "その他" %> その>他</label>
+    <label class="radio-inline"><%= form.radio_button :sex, "男の子" %> 男の子 </label>
+    <label class="radio-inline"><%= form.radio_button :sex, "女の子" %> 女の子</label>
+    <label class="radio-inline"><%= form.radio_button :sex, "その他" %> その他</label>
   </div>
 
     <div class="form-group", id="form_margin">
       <%= form.label :誕生日 %><br>
-      <%= form.date_select :birthday, class:"form-control input-lg" %>
+      <div class='input-group date datepicker'>
+        <%= form.date_field :birthday, class:"form-control input-lg" %>
+      </div>
     </div>
 
-    <div class="form-group", id="form_margin">
-    <%= form.submit "設定を変更", class:"btn btn-primary btn-lg" %>
-    </div>
 
+    <div class="form-group">
+    <%= button_tag :type => "submit", :class =>"button" do %>
+      <%= fa_icon("child") %> 設定を変更する
     <% end %>
-    <%= link_to "＜＜前の画面に戻る", child_path %>
+  <% end %><br><br>
 
+    <%= link_to child_path do %>
+      <%= fa_icon("backward") %> 前の画面に戻る
+    <% end %>
   </div> <%# グリッドシステム%>
+
   </div>  <%# ページ全体を囲むコンテナ%>

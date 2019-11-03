@@ -1,8 +1,7 @@
 <div class="container">  <%# ページ全体を囲むコンテナ%>
-<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
-
   <h2 class="text-center">身長・体重の修正</h2><br>
 
+<div class="col-md-offset-2 col-md-8 well"> <%# グリッドシステム%>
   <div class="search-form">
     <%= form_with(scope: :search, url: detail_growth_path, method: :get, local: true, :html => {:class => "form-inline"} ) do |form| %>
       <%= form.label:測定日 %>
@@ -17,7 +16,7 @@
           <%= form.date_field :date_to, value: @search_params[:date_to], class:"form-control" %>
         </div>
       </div>
-      <%= form.submit "検索", class:"btn btn-primary" %>
+      <%= form.submit "検索", class:"button" %>
     <% end %>
   </div><br>
 
@@ -33,7 +32,7 @@
        </tr>
      </thead>
      <tbody>
-       <% @growths.each do |form| %>
+       <% @growths.reverse_each do |form| %>
         <tr>
         <td><%= form.date.strftime("%Y年%m月%d日")  %></td>
         <td><%= form.weight %></td>
@@ -50,7 +49,9 @@
 
   <%= will_paginate @growths, :renderer => BootstrapPagination::Rails %><br>
 
-  <%= link_to '＜＜グラフのページに戻る', growths_path %>
+  <%= link_to growths_path do %>
+    <%= fa_icon("backward") %> 前のページに戻る
+  <% end %>
 
 </div> <%# グリッドシステム%>
 </div>  <%# ページ全体を囲むコンテナ%>

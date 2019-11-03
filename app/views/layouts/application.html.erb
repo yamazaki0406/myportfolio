@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Concert+One|Kosugi+Maru&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= yield(:title) %> 子育て共有アプリ　～日々の成長を記録しよう～</title>
@@ -12,7 +13,7 @@
     <%= render "layouts/shim" %>
   </head>
 
-  <body>
+  <body class="body_backrground">
      <%= render "layouts/header" %>
      <% flash.each do |message_type,message| %>
        <div class="flash time-limit">

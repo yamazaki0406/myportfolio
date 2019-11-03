@@ -1,13 +1,16 @@
 <div class="container">  <%# ページ全体を囲むコンテナ%>
-<div class="col-md-offset-3 col-md-6"> <%# グリッドシステム%>
-
-  <h2 class="text-center">身長・体重の入力</h2>
+<br>
+<h2 class="text-center">身長・体重の入力</h2>
+<br>
+<div class="col-md-offset-3 col-md-6 well"> <%# グリッドシステム%>
   <%= form_for(@growth, url:growths_path) do |form| %>
   <%= render "shared/error_messages", object: form.object %>
     <div class="form-group">
       <%= form.label :測定日 %>
-      <%= form.date_select :date, class:"form-control" %>
+              <div class='input-group date datepicker'>
+      <%= form.date_field :date, class:"form-control", value:Date.today %>
     </div>
+  </div>
 
     <div class="form-group">
       <%= form.label :身長 %>
@@ -22,11 +25,14 @@
       <%= form.hidden_field :user_id, value:session[:user_id] %>
 
     <div class="form-group">
-      <%= form.submit "データを入力", class:"btn btn-primary" %>
+      <%= form.submit "データを入力", class:"button" %>
     </div>
-
   <% end %>
-  <%= link_to ' ＜＜身長・体重一覧に戻る', growths_path %><br><br>
+<br>
+
+  <%= link_to growths_path do %>
+    <%= fa_icon("backward") %> 前のページに戻る
+  <% end %>
 
 </div> <%# グリッドシステム%>
 </div>  <%# ページ全体を囲むコンテナ%>

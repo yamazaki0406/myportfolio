@@ -1,18 +1,24 @@
 <%= render "layouts/header" %>
 
-<div class="container"> <%# ページ全体を囲むコンテナ%>
-<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
+<div class="container" id="main_background">  <%# ページ全体を囲むコンテナ%>
+<br><br>
 
-  <h2 class="text-center">子どもの一覧</h2>
-  <p class="text-center">あなたが登録した子ども・別のユーザーから受け取った子どもの一覧です。</p>
+<h2 class="text-center">子どもの一覧</h2>
+<p class="text-center">あなたが登録した子ども・別のユーザーから受け取った子どもの一覧です。</p>
 
-  <%= link_to "新しい子どもを登録", new_child_path, class:"btn btn-primary btn-lg" %>
-  <br>
+<div class="col-md-offset-3 col-md-6 well"> <%# グリッドシステム%>
+
   <table class="table">
     <tbody>
     <% @children.each do |form| %>
     <tr>
-    <td><%= form.name %></td>
+    <td><% if form.sex == "男の子" %>
+          <p><%= form.name %>くん</p>
+        <% else %>
+          <p><%= form.name %>ちゃん</p>
+        <% end %>
+    </td>
+
     <% if form.id == session[:child_id] %>
   　  <td></td>
     <% elsif %>
@@ -25,7 +31,10 @@
     <% end %>
     </tbody>
   </table>
-  <%= link_to '＜＜各種設定に戻る', edit_path %>
+
+  <%= link_to edit_path do %>
+    <%= fa_icon("backward") %> 各種設定に戻る
+  <% end %>
 
 </div> <%# グリッドシステム%>
 </div> <%# ページ全体を囲むコンテナ%>

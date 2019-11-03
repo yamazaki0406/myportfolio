@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  layout 'top_page'
+  layout 'headerless_layout'
 
   before_action :logged_in_user, only: %i[index edit update destroy]
   before_action :correct_user,   only: %i[edit update]

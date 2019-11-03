@@ -4,7 +4,7 @@ class ChildrenController < ApplicationController
   def new
     @child = Child.new
     @child_password = (0..6).map { rand(65..90).chr }.join
-    render layout: 'top_page'
+    render layout: 'headerless_layout'
   end
 
   def create
@@ -16,7 +16,7 @@ class ChildrenController < ApplicationController
       select_a_child @child
       redirect_to @child
     else
-      render 'new', layout: 'top_page'
+      render 'new', layout: 'headerless_layout'
     end
   end
 
