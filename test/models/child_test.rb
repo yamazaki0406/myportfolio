@@ -31,6 +31,8 @@ class ChildTest < ActiveSupport::TestCase
   end
 
   test 'birthday should be present (nonblank)' do
+    @child.birthday = '  '
+    assert_not @child.valid?
     @child.birthday = Date.today + 1
     assert_not @child.valid?
   end

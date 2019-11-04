@@ -9,14 +9,14 @@ class ShareAChildTest < ActionDispatch::IntegrationTest
     @child = children(:tom)
   end
 
-  test 'redirect to login when non parent show child_password' do
+  test 'redirect to login when non parent check child_password' do
     log_in_as(@other_user)
     get family_path(@child.id)
     follow_redirect!
     assert_template 'sessions/new'
   end
 
-  test 'invalid share a child' do
+  test 'invalid child sharing' do
     log_in_as(@other_user)
     assert_no_difference 'Family.count' do
       post families_path, params: { family: { child_id: @child.id + 1,
@@ -39,7 +39,7 @@ class ShareAChildTest < ActionDispatch::IntegrationTest
     assert_template 'families/new'
   end
 
-  test 'valid share a child' do
+  test 'valid child sharing ' do
     log_in_as(@other_user)
     assert_difference 'Family.count', 1 do
       post families_path, params: { family: { child_id: @child.id,

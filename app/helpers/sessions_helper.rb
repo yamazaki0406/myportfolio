@@ -8,9 +8,6 @@ module SessionsHelper
   def select_child(child)
     session.delete(:child_id) unless session[:child_id].nil?
     session[:child_id] = child.id
-    # もし、子どものセッションを持っていたらセッションを切る
-    # paramsに入っているセッションを追加する
-    # 新しく入っているセッションにリダイレクトする
   end
 
   def change_child; end
