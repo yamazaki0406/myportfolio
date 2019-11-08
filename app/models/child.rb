@@ -2,7 +2,7 @@
 
 class Child < ApplicationRecord
   has_many :families
-  has_many :users, through: :familys
+  has_many :users, through: :families
   has_many :growths
   has_many :microposts, dependent: :destroy
   has_many_attached :images
