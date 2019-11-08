@@ -2,5 +2,6 @@
 
 class TopsController < ApplicationController
   layout 'title_page_layout'
-  def index; end
+  def index
+  end
 end
