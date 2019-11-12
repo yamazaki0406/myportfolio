@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_192105) do
+ActiveRecord::Schema.define(version: 2019_10_28_211659) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -34,18 +34,18 @@ ActiveRecord::Schema.define(version: 2019_08_22_192105) do
   end
 
   create_table "children", force: :cascade do |t|
-    t.string "name"
-    t.string "sex"
-    t.date "birthday"
+    t.string "name", null: false
+    t.string "sex", null: false
+    t.date "birthday", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.string "child_password"
+    t.integer "user_id", null: false
+    t.string "child_password", null: false
   end
 
   create_table "families", force: :cascade do |t|
-    t.integer "child_id"
-    t.integer "user_id"
+    t.integer "child_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_families_on_child_id"
@@ -53,29 +53,37 @@ ActiveRecord::Schema.define(version: 2019_08_22_192105) do
   end
 
   create_table "growths", force: :cascade do |t|
-    t.date "date"
-    t.float "height"
-    t.float "weight"
-    t.integer "child_id"
+    t.date "date", null: false
+    t.float "height", null: false
+    t.float "weight", null: false
+    t.integer "child_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.index ["child_id"], name: "index_growths_on_child_id"
   end
 
-  create_table "microposts", force: :cascade do |t|
-    t.text "content"
-    t.integer "child_id"
+  create_table "maps", force: :cascade do |t|
+    t.text "content", null: false
+    t.integer "child_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+  end
+
+  create_table "microposts", force: :cascade do |t|
+    t.text "content", null: false
+    t.integer "child_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["child_id", "created_at"], name: "index_microposts_on_child_id_and_created_at"
     t.index ["child_id"], name: "index_microposts_on_child_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
