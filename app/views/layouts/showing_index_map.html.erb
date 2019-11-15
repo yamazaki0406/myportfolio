@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Concert+One|Kosugi+Maru&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= yield(:title) %> 子育て共有アプリ　～日々の成長を記録しよう～</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= Gon::Base.render_data %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'load' %>
+    <%= javascript_include_tag "multiple_markers.js" %>
+    <%= render "layouts/shim" %>
+  </head>
+
+  <body class="body_backrground">
+     <%= render "layouts/header" %>
+     <% flash.each do |message_type,message| %>
+       <div class="flash time-limit">
+         <div class="alert alert-<%= message_type %>", id="alert"><%= message %></div>
+       </div>
+     <% end %>
+     <%= yield %>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF7HSI_H8msXMWvhTeCW_UVHKBMrjWWps&callback=initMap" async defer></script>
+<script>
+  let longitude = 35.691574;
+  let latitude = 139.704647;
+
+    function initMap() {
+      mapInstance = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: longitude, lng: latitude},
+      zoom: 13
+      });
+
+      var latLngBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng( 35.691574, 139.704647 ) ,
+        new google.maps.LatLng( 35.699899, 139.721999 )
+      ) ;
+
+        mapInstance.fitBounds( latLngBounds, 13 ) ;
+
+      //複数マーカー ここから
+      <% @maps.each do |place| %>
+      (function(){
+        var marker = new google.maps.Marker({
+            position:{lat: <%= place.latitude %>, lng: <%= place.longitude %>},
+            map: mapInstance,
+        });
+       })();
+      <% end %>
+      //複数マーカー ここまで
+  }
+</script>
+  </body>
+</html>

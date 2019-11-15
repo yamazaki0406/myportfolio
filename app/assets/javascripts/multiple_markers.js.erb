@@ -1,0 +1,29 @@
+let mapInstance
+let longitude = 35.691574;
+let latitude = 139.704647;
+
+  function initMap() {
+    mapInstance = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: longitude, lng: latitude},
+    zoom: 13
+    });
+
+    var latLngBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng( 35.691574, 139.704647 ) ,
+      new google.maps.LatLng( 35.699899, 139.721999 )
+    ) ;
+
+      mapInstance.fitBounds( latLngBounds, 13 ) ;
+
+    //複数マーカー ここから
+    <% @maps.each do |place| %>
+    (function(){
+      var marker = new google.maps.Marker({
+          position:{lat: <%= place.latitude %>, lng: <%= place.longitude %>},
+          map: mapInstance,
+          draggable: true
+      });
+     })();
+    <% end %>
+    //複数マーカー ここまで
+}

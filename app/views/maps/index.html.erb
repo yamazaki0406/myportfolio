@@ -1,2 +1,23 @@
-<h1>Maps#index</h1>
-<p>Find me in app/views/maps/index.html.erb</p>
+<div class="container">  <%# ページ全体を囲むコンテナ%>
+<div class="col-md-offset-3 col-md-6"> <%# グリッドシステム%>
+
+  <h2 class="text-center" id="page_title">地図で残す</h2>
+  <p class="text-center">子どもの毎日の成長を記録しましょう。</p>
+
+  <%= link_to new_map_path, class:"button" do %>
+    <%= fa_icon("pencil-square-o") %> 記事を追加
+  <% end %>
+  <br>
+
+        <div id="map"></div>
+
+  <%= will_paginate @maps, :renderer => BootstrapPagination::Rails %>　
+  <br>
+
+  <%= link_to child_path(session[:child_id]) do %>
+    <%= fa_icon("backward") %> トップページに戻る
+  <% end %>
+  <br><br>
+
+</div> <%# グリッドシステム%>
+</div> <%# ページ全体を囲むコンテナ%>

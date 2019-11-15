@@ -10,9 +10,11 @@
     <%= Gon::Base.render_data %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'load' %>
+    <%= javascript_include_tag "_form.js" %>
+    <%= javascript_include_tag "image_upload.js" %>
+    <%= javascript_include_tag "chart" %>
     <%= render "layouts/shim" %>
   </head>
-
   <body class="body_backrground">
      <%= render "layouts/header" %>
      <% flash.each do |message_type,message| %>
