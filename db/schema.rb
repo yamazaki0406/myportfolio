@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2019_11_16_112933) do
   end
 
   create_table "albums", force: :cascade do |t|
-    t.text "content"
-    t.integer "child_id"
-    t.integer "user_id"
+    t.text "content", null: false
+    t.integer "child_id", null: false
+    t.integer "user_id", null: false
     t.decimal "longitude", precision: 9, scale: 6
     t.decimal "latitude", precision: 9, scale: 6
     t.string "type"
@@ -46,18 +46,18 @@ ActiveRecord::Schema.define(version: 2019_11_16_112933) do
   end
 
   create_table "children", force: :cascade do |t|
-    t.string "name"
-    t.string "sex"
-    t.date "birthday"
+    t.string "name", null: false
+    t.string "sex", null: false
+    t.date "birthday", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.string "child_password"
+    t.integer "user_id", null: false
+    t.string "child_password", null: false
   end
 
   create_table "families", force: :cascade do |t|
-    t.integer "child_id"
-    t.integer "user_id"
+    t.integer "child_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_families_on_child_id"
@@ -65,19 +65,19 @@ ActiveRecord::Schema.define(version: 2019_11_16_112933) do
   end
 
   create_table "growths", force: :cascade do |t|
-    t.date "date"
-    t.float "height"
-    t.float "weight"
-    t.integer "child_id"
+    t.date "date", null: false
+    t.float "height", null: false
+    t.float "weight", null: false
+    t.integer "child_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.index ["child_id"], name: "index_growths_on_child_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
