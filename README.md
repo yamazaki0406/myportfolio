@@ -47,7 +47,7 @@ https://childport.net/
 
 # 取り組んでいる課題
 * Google Maps Javascript APIを使用した機能の充実
-* YouTube Data APIを使用した機能の充実
+* YouTube Data APIを使用した機能の実装
 * 定刻にユーザーへ通知を送る機能の実装(AWS LambdaとLINE Notifyを想定)
 * ローカル環境でDockerを用いた開発環境の構築
 * CI/CDパイプラインの実装
