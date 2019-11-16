@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- root "tops#index"
+root "tops#index"
 
  resources :users
  get "/signup", to: "users#new"
@@ -21,12 +21,11 @@ Rails.application.routes.draw do
    delete :purge, on: :member
  end
 
+ resources :maps
+
  resources :families do
    post :share, on: :member
  end
-
- resources :maps
- get '/map_request', to: 'maps#map', as: 'map_request'
 
  get "/edit", to: "static_pages#edit"
 

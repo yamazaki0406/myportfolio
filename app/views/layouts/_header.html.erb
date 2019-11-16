@@ -3,7 +3,10 @@
   <div class="navbar-header">
       <span class="ribbon-left"><%= fa_icon("paw") %></span>
       <div>
-        <%= link_to "あなたのお名前：" + User.find(session[:user_id]).name + " さん", child_path(session[:child_id]), class: "navbar-brand" %>
+
+        <%= link_to child_path(session[:child_id]), class: "navbar-brand" do %>
+          <span id="none">あなたのお名前：</span><%= User.find(session[:user_id]).name %> さん
+        <% end %>
       </div>
       <span class="ribbon-right"><%= fa_icon("paw") %></span>
 </div>

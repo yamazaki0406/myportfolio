@@ -13,7 +13,7 @@
   <div class="row">
     <% if @child.images.attached? %>
       <% @child.images.each do |image| %>
-        <%= image_tag image.variant(resize:'400x400'), class:"img-circle center-block", id:"child_img" %>
+        <%= image_tag image.variant(resize:'350x350'), class:"img-circle center-block", id:"child_img" %>
       <% end %>
     <% else %>
       <% if @child.sex == "男の子" %>
@@ -27,21 +27,24 @@
   <div class="row">
     <h3 class="child_age text-center"><%= @age %>歳</h3>
   </div>
-<br>
 
-<div class="col-md-offset-3 col-md-6"> <%# グリッドシステム%>
+<div class="col-md-offset-2 col-md-8"> <%# グリッドシステム%>
   <div class="child_list">
     <div class="child_button_set">
-      <%= link_to microposts_path, class:"child_button" do %><span><%= fa_icon("book 3x") %><span><% end %>
-      <h5 class="text-center">アルバムを書く</h5>
+      <%= link_to microposts_path, class:"child_button" do %><span><%= fa_icon("book 3x") %></span><% end %>
+      <h5 class="text-center" id="none">アルバムを書く</h5>
+    </div>
+    <div class="child_button_set">
+      <%= link_to maps_path, class:"child_button" do %><span><%= fa_icon("map-pin 3x") %><span><% end %>
+      <h5 class="text-center" id="none">思い出の場所を残す</h5>
     </div>
     <div class="child_button_set">
       <%= link_to growths_path, class:"child_button" do %><span><%= fa_icon("bar-chart 3x") %> </span><% end %>
-      <h5 class="text-center">身長・体重を測る</h5>
+      <h5 class="text-center" id="none">身長・体重を測る</h5>
     </div>
     <div class="child_button_set">
       <%= link_to edit_path, class:"child_button" do %><span><%= fa_icon("file 3x") %></span><% end %>
-      <h5 class="text-center">各種設定</h5>
+      <h5 class="text-center" id="none">各種設定</h5>
     </div>
   </div>
 </div>

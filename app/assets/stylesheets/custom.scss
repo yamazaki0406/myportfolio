@@ -17,15 +17,6 @@ h2{
   margin-top: 10px;
 }
 
-  .test{
-    /*ここからアルバムのタブ*/
-    background-color: gray;
-    border: 1px solid #ddd;
-    border-radius: 4px 4px 0 0;
-    color: white
-  }
-/*ここまでアルバムのタブ*/
-
 .pyonpyon span {
     animation: pyon 0.3s linear;
     position: relative;
@@ -116,7 +107,7 @@ h2{
   }
   @media screen and (max-width: 766px) {
     #top_nav_list{
-      width: 60%;
+      width: 70%;
       font-size: 18px;
     }
   }
@@ -203,7 +194,7 @@ h2{
 /*ここからヘッダーのスタイル*/
   .ribbon-wrapper {
     top: 10px;
-    left: 20px;
+    left: 1%;
     display: inline-block;
     padding-right: 45px;
     padding-left: 50px;
@@ -379,11 +370,10 @@ h2{
 #child_non_img{
   border: solid;
   border-radius: 50%;
-  margin: 20px 20px 15px 15px;
-  height: 300px;
+  height: 250px;
   width: 350px;
   text-align: center;
-  line-height: 350px;
+  line-height: 300px;
   margin-left: auto;
   margin-right: auto;
   background-color: white;
@@ -392,7 +382,25 @@ h2{
 
 #child_img{
   box-shadow: 5px 10px 20px #9E9E9E;
+  height: 250px;
+  width: 350px;
+  margin-top: 10px;
 }
+
+  @media screen and (max-width: 766px) {
+    #none{
+      display: none;
+    }
+    .child_button{
+      width: 80px;
+      height: 80px;
+      padding-top: 0;
+    }
+    #child_img{
+      height: 200px;
+      width: 300px;
+    }
+  }
 
 #static_edit_menu{
   display: flex;

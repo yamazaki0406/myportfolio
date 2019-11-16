@@ -1,19 +1,15 @@
 <div class="container">  <%# ページ全体を囲むコンテナ%>
 <div class="col-md-offset-3 col-md-6"> <%# グリッドシステム%>
 
-  <h2 class="text-center" id="page_title">地図で残す</h2>
-  <p class="text-center">子どもの毎日の成長を記録しましょう。</p>
+  <h2 class="text-center" id="page_title">思い出の場所</h2>
+  <p class="text-center">マーカーをクリックすると、その場所での思い出が表示されます。</p>
 
   <%= link_to new_map_path, class:"button" do %>
-    <%= fa_icon("pencil-square-o") %> 記事を追加
+    <%= fa_icon("pencil-square-o") %> 新しい場所を追加
   <% end %>
-  <br>
-
+  <br><br>
         <div id="map"></div>
-
-  <%= will_paginate @maps, :renderer => BootstrapPagination::Rails %>　
   <br>
-
   <%= link_to child_path(session[:child_id]) do %>
     <%= fa_icon("backward") %> トップページに戻る
   <% end %>
@@ -21,3 +17,55 @@
 
 </div> <%# グリッドシステム%>
 </div> <%# ページ全体を囲むコンテナ%>
+
+
+<script>
+
+  let max_latitude = gon.max_latitude;
+  let min_latitude = gon.min_latitude;
+  let max_longitude = gon.max_longitude;
+  let min_longitude = gon.min_longitude;
+  var marker = []
+  var markerData = [
+    { name: 'TAM 東京', lat: 35.691574, lng: 139.704647, },
+    { name: '小川町駅', lat: 35.6951212, lng: 139.76610649999998 },
+    { name: '淡路町駅', lat: 35.69496, lng: 139.76746000000003 },
+    { name: '御茶ノ水駅', lat: 35.6993529, lng: 139.76526949999993 },
+    { name: '神保町駅', lat: 35.695932, lng: 139.75762699999996 },
+    { name: '新御茶ノ水駅', lat: 35.696932, lng: 139.76543200000003 }
+  ];
+
+  function initMap() {
+     var mapLatLng = new google.maps.LatLng({lat: markerData[0]['lat'], lng: markerData[0]['lng']});
+     map = new google.maps.Map(document.getElementById('map'), {
+       center: mapLatLng,
+       zoom: 13,
+     });
+     var sw = new google.maps.LatLng(min_latitude, min_longitude);
+     var ne = new google.maps.LatLng(max_latitude, max_longitude);
+     var bounds = new google.maps.LatLngBounds(sw, ne);
+     map.fitBounds(bounds,13);
+
+    <% @maps.each do |place| %>
+      (function(){
+        var contentString = "<%= place.content %>";
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+          position:{lat: <%= place.latitude %>, lng: <%= place.longitude %>},
+          map: map
+        });
+
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+
+        marker.addListener('dbclick', function() {
+          infowindow.open(map, marker);
+        });
+      })();
+    <% end %>
+  }
+</script>

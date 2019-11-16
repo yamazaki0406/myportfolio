@@ -1,7 +1,13 @@
+# frozen_string_literal: true
+
 class MapsController < ApplicationController
   def index
     @child = Child.find(session[:child_id])
-    @maps = @child.maps.paginate(page: params[:page], per_page: 5)
+    @maps = @child.maps
+    gon.max_latitude = @maps.pluck(:latitude).max
+    gon.min_latitude = @maps.pluck(:latitude).min
+    gon.max_longitude = @maps.pluck(:longitude).max
+    gon.min_longitude = @maps.pluck(:longitude).min
     render layout: 'showing_index_map'
   end
 
@@ -15,23 +21,20 @@ class MapsController < ApplicationController
     @child = Child.find(session[:child_id])
     @map = @child.maps.build(map_params)
     if @map.save
-      flash[:success] = '記事の登録が完了しました！'
       redirect_to maps_url
+      flash[:success] = '思い出の場所を追加しました！'
     else
-      render 'new'
+      redirect_to new_map_url
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   private
 
   def map_params
     params.require(:map).permit(:content, :user_id, :child_id, :longitude, :latitude)
   end
-
 end
