@@ -12,6 +12,8 @@ class MicropostsController < ApplicationController
   def new
     @child = Child.find(session[:child_id])
     @micropost = @child.microposts.build
+    @map = @child.maps.build
+    render layout: 'creating_new_map'
   end
 
   def create

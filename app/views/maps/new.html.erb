@@ -1,0 +1,68 @@
+<div class="container">  <%# ページ全体を囲むコンテナ%>
+<h2 class="text-center">思い出の場所を追加する</h2>
+<div class="col-md-offset-3 col-md-6">
+
+  <p class="text-center">マーカーをドラッグで動かして、思い出とともに地図に残そう。</p>
+
+  <div id="map"></div>
+
+  <%= form_for(@map) do |form| %>
+  <%= render "shared/error_messages", object: form.object %>
+    <div class="form-group">
+      <%= form.hidden_field :latitude, id:"latitude", size:"20", value:"35.691574", step:"0.000000000000000001" %>
+      <%= form.hidden_field :longitude, id:"longitude", size:"20", value:"139.704647", step:"0.000000000000000001" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :この場所での思い出 %><br>
+      <%= form.text_area :content, class:"form-control", size:"20x3", id: "input-map-text" %>
+      <p id="map-counter">残り50文字</p>
+    </div>
+
+    <%= form.hidden_field :user_id, value:session[:user_id] %>
+
+    <%= button_tag :type => "submit", :class =>"button" do %>
+      <%= fa_icon("pencil-square-o") %> 地図に残す
+    <% end %>
+  <% end %>
+
+</div>
+</div> <%# ページ全体を囲むコンテナ%>
+<script type="text/javascript">
+  let mapInstance
+  let latitude = 35.691574;
+  let longitude = 139.704647;
+
+  function initMap(){
+    mapInstance = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: latitude, lng: longitude},
+      zoom: 13
+    });
+
+    let new_marker = new google.maps.Marker({
+      map: mapInstance,
+      position: new google.maps.LatLng( latitude, longitude ) ,
+      draggable: true,
+      animation: google.maps.Animation.DROP
+    });
+
+    google.maps.event.addListener( new_marker, 'dragend', function(ev){
+      document.getElementById('latitude').value = ev.latLng.lat();
+      document.getElementById('longitude').value = ev.latLng.lng();
+    });
+  }
+
+  // mapの文字カウント(50文字以内)
+  $(document).ready(function(){
+    let mapCountNum = String($("#input-map-text").val().length);
+     $("#map-counter").text("残り" + (50 - mapCountNum) + "文字");
+  });
+
+  $(document).ready(function(){
+   $("#input-map-text").on("keyup", function() {
+     let mapCountNum = String($(this).val().length);
+     $("#map-counter").text("残り" + (50 - mapCountNum) + "文字");
+   });
+  });
+
+</script>

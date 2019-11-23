@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Micropost < ApplicationRecord
+class Micropost < Album
   belongs_to :user
   belongs_to :child
   has_many_attached :images

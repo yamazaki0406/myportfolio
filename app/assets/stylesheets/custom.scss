@@ -8,9 +8,26 @@
   font-family: 'Kosugi Maru', sans-serif;
 }
 
-h1, h2, h5, .child_age{
+h1, h5, .child_age{
   font-weight: bold;
 }
+
+h2{
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.pyonpyon span {
+    animation: pyon 0.3s linear;
+    position: relative;
+}
+
+@keyframes pyon {
+    0% {top: 0}
+    50% {top:-30px}
+    100%{top: 0}
+}
+
 
 /*ここからトップページのタイトル・サブタイトル*/
   @media screen and (min-width: 767px) {
@@ -90,7 +107,7 @@ h1, h2, h5, .child_age{
   }
   @media screen and (max-width: 766px) {
     #top_nav_list{
-      width: 60%;
+      width: 70%;
       font-size: 18px;
     }
   }
@@ -177,7 +194,7 @@ h1, h2, h5, .child_age{
 /*ここからヘッダーのスタイル*/
   .ribbon-wrapper {
     top: 10px;
-    left: 20px;
+    left: 1%;
     display: inline-block;
     padding-right: 45px;
     padding-left: 50px;
@@ -227,8 +244,6 @@ h1, h2, h5, .child_age{
     border-bottom: 10px solid transparent;
   }
 /*ここまでヘッダーのスタイル*/
-
-
 
 #img_field {
   font-size: 15px;
@@ -355,11 +370,10 @@ h1, h2, h5, .child_age{
 #child_non_img{
   border: solid;
   border-radius: 50%;
-  margin: 20px 20px 15px 15px;
-  height: 300px;
+  height: 250px;
   width: 350px;
   text-align: center;
-  line-height: 350px;
+  line-height: 300px;
   margin-left: auto;
   margin-right: auto;
   background-color: white;
@@ -368,7 +382,25 @@ h1, h2, h5, .child_age{
 
 #child_img{
   box-shadow: 5px 10px 20px #9E9E9E;
+  height: 250px;
+  width: 350px;
+  margin-top: 10px;
 }
+
+  @media screen and (max-width: 766px) {
+    #none{
+      display: none;
+    }
+    .child_button{
+      width: 80px;
+      height: 80px;
+      padding-top: 0;
+    }
+    #child_img{
+      height: 200px;
+      width: 300px;
+    }
+  }
 
 #static_edit_menu{
   display: flex;
@@ -402,4 +434,8 @@ margin-bottom: 35px;
 
 #growth_button{
   margin: 5px;
+}
+
+#map{
+  height: 400px;
 }

@@ -2,17 +2,15 @@
 <br>
 <h2 class="text-center">アルバムを作成する</h2>
 <br>
-<div class="col-md-offset-3 col-md-6 well"> <%# グリッドシステム%>
-  <%= form_for(@micropost) do |form| %>
-  <%= render "shared/error_messages", object: form.object %>
-  <br>
+<div class="col-md-offset-3 col-md-6 well">
 
+    <%= form_for(@micropost) do |form| %>
+    <%= render "shared/error_messages", object: form.object %>
     <div class="form-group">
       <%= form.label :今日の出来事 %><br>
       <%= form.text_area :content, class:"form-control", size:"20x10", id: "input-text" %>
       <p id="counter">残り300文字</p>
-    </div>
-    <br>
+    </div><br>
 
     <div class="field image">
       <%= form.label '写真' %>
@@ -28,19 +26,42 @@
       <%= form.file_field :images, multiple: true, style: "display:none;", id: "file"%>
     </div>
 
-    <%= form.hidden_field :user_id, value:session[:user_id] %>
-    <br>
+    <%= form.hidden_field :user_id, value:session[:user_id] %><br>
 
     <%= button_tag :type => "submit", :class =>"button" do %>
       <%= fa_icon("pencil-square-o") %> アルバムを追加
     <% end %>
+    <% end %><br>
 
-  <% end %>
-  <br><br>
-
-  <%= link_to microposts_path do %>
-    <%= fa_icon("backward") %> アルバム一覧に戻る
-  <% end %>
-
-</div> <%# グリッドシステム%>
+    <%= link_to microposts_path do %>
+      <%= fa_icon("backward") %> アルバム一覧に戻る
+    <% end %>
+  <br>
+</div>
 </div> <%# ページ全体を囲むコンテナ%>
+
+<script>
+  $(document).ready(function(){
+    $fileField = $('#file')
+
+    $($fileField).on('change', $fileField, function(e) {
+      file = e.target.files[0]
+      reader = new FileReader(),
+      $preview = $("#img_field");
+
+      reader.onload = (function(file) {
+        return function(e) {
+          $preview.empty();
+          $preview.append($('<img>').attr({
+            src: e.target.result,
+            width: "100%",
+            height: "100%",
+            class: "preview",
+            title: file.name
+          }));
+        };
+      })(file);
+      reader.readAsDataURL(file);
+    });
+  });
+</script>

@@ -3,8 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
-    let(:user){build(:user)}
+  let(:user) { build(:user) }
 
   it '適切なユーザーが登録できることを確認' do
     expect(user).to be_valid

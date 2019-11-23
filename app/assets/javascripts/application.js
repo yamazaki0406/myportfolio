@@ -16,6 +16,6 @@
 //= require bootstrap
 //= require moment
 //= require bootstrap-datetimepicker
-//= require turbolinks
+// require turbolinks
 //= require activestorage
 //= require_tree .

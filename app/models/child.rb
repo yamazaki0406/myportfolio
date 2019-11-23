@@ -4,8 +4,10 @@ class Child < ApplicationRecord
   has_many :families
   has_many :users, through: :families
   has_many :growths
-  has_many :microposts, dependent: :destroy
   has_many_attached :images
+  has_many :albums, dependent: :destroy
+  has_many :microposts, dependent: :destroy
+  has_many :maps, dependent: :destroy
 
   validates :name,     presence: true, length: { maximum: 50 }
   validates :sex,      presence: true

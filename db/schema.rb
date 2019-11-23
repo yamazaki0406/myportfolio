@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_211659) do
+ActiveRecord::Schema.define(version: 2019_11_16_112933) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(version: 2019_10_28_211659) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "albums", force: :cascade do |t|
+    t.text "content", null: false
+    t.integer "child_id", null: false
+    t.integer "user_id", null: false
+    t.decimal "longitude", precision: 9, scale: 6
+    t.decimal "latitude", precision: 9, scale: 6
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id", "user_id", "created_at"], name: "index_albums_on_child_id_and_user_id_and_created_at"
   end
 
   create_table "children", force: :cascade do |t|
@@ -61,24 +73,6 @@ ActiveRecord::Schema.define(version: 2019_10_28_211659) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.index ["child_id"], name: "index_growths_on_child_id"
-  end
-
-  create_table "maps", force: :cascade do |t|
-    t.text "content", null: false
-    t.integer "child_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "microposts", force: :cascade do |t|
-    t.text "content", null: false
-    t.integer "child_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.index ["child_id", "created_at"], name: "index_microposts_on_child_id_and_created_at"
-    t.index ["child_id"], name: "index_microposts_on_child_id"
   end
 
   create_table "users", force: :cascade do |t|
