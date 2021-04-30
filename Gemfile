@@ -16,7 +16,7 @@ gem 'will_paginate-bootstrap'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.3.7'
 gem 'chart-js-rails', '~> 0.1.4'
-gem 'gon', '~> 6.2.0'
+gem 'gon', '~> 6.4.0'
 gem 'font-awesome-rails'
 gem "rails-i18n"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
